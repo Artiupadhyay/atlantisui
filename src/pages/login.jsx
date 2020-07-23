@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from'react-redux';
 
 function Login(props) {
     return(
@@ -20,11 +21,24 @@ function Login(props) {
                 <input type="text" className="form-control" placeholder="Enter password here"/>
             </div>
             <a className="link" href="#">Forgot password? Click here.</a>
+           
             </form>
             </div>
         </div>
 
     );
-} 
+}
+ const mapStateToProps = (state)=>{
+     return {
+         authenticate:state.authenticate
+    };
+ }
+ const mapDispatchToProps = (dispatch)=>{
+     return {
+         changeName : ()=>{dispatch({})}
+     };
+ }
 
-export default Login;
+  
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
