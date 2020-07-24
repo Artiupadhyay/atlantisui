@@ -4,6 +4,7 @@ import {connect} from'react-redux';
 function Login(props) {
     const [userName, setUserName] = React.useState(null);
     const [password, setPassword] = React.useState(null);
+    
 
     const handelUserNameChange = (event)=>{
         setUserName(event.target.value);
@@ -32,7 +33,7 @@ function Login(props) {
 
                 <input type="text" className="form-control" value={password} placeholder="Enter password here" onChange={handelPasswordChange}/>
             </div>
-             <button type="btn btn-primary" name="submit">Submit</button>
+             <button type="btn btn-primary" name="submit" onClick={()=>this.login()}>Submit</button>
             <a className="link" href="#">Forgot password? Click here.</a>
            
             </form>

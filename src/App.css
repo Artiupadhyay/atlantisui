@@ -30,10 +30,16 @@
 .content{
   color:white;
 }
+.bg{
+  background-image: url("bg4.jpg");
+  width:100vw;
+}
+
 .image{
   background-image: url("bg4.jpg");
   background-repeat: no-repeat;
-  min-height:650px;
+  height: 100vh;
+  width: 100vw;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
