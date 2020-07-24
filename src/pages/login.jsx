@@ -2,6 +2,16 @@ import React from 'react';
 import {connect} from'react-redux';
 
 function Login(props) {
+    const [userName, setUserName] = React.useState(null);
+    const [password, setPassword] = React.useState(null);
+
+    const handelUserNameChange = (event)=>{
+        setUserName(event.target.value);
+    }
+    const handelPasswordChange = (event)=>{
+        setPassword(event.target.value);
+    }
+    
     return(
            <div className="p-3 image row d-flex justify-content-center align align-items-center">
                <div className="col-md-6">
@@ -14,15 +24,19 @@ function Login(props) {
             <h4>To Access the Portal</h4>
             <div className="md-form md-outline">
                 Username:
-                <input type="text" className="form-control" placeholder="Enter your email here"/>
+                <input type="text" className="form-control" value = {userName} placeholder="Enter your email here" onChange={handelUserNameChange}/>
             </div>
             <div className="md-form md-outline">
                 Password:
-                <input type="text" className="form-control" placeholder="Enter password here"/>
+
+
+                <input type="text" className="form-control" value={password} placeholder="Enter password here" onChange={handelPasswordChange}/>
             </div>
+             <button type="btn btn-primary" name="submit">Submit</button>
             <a className="link" href="#">Forgot password? Click here.</a>
            
             </form>
+
             </div>
         </div>
 
