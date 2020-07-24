@@ -2,9 +2,17 @@ import React from 'react';
 import {connect} from'react-redux';
 
 function Login(props) {
-    const [userName, setUserName] = React.useState(null);
-    const [password, setPassword] = React.useState(null);
-    
+    const [userName, setUserName] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const login =()=>{
+        console.log("loginhere")
+        fetch('http://127.0.0.1:8000/auth/login/',{
+            method:'post',
+            body:JSON.stringify({email:userName, password:password})
+        }).then(res=>res.json()).then(data=>{
+            console.log("Data :-"+data);
+        }).catch(err=>console.log(err));
+    }
 
     const handelUserNameChange = (event)=>{
         setUserName(event.target.value);
@@ -13,6 +21,7 @@ function Login(props) {
         setPassword(event.target.value);
     }
     
+    
     return(
            <div className="p-3 image row d-flex justify-content-center align align-items-center">
                <div className="col-md-6">
@@ -20,7 +29,7 @@ function Login(props) {
                    <h2 className="content">Learning is fun!!</h2>
                </div>
                <div className="col-md-3">
-            <form action="" className="form">
+            <div className="form">
             <h4 className="font-weight-bold mb-3">SIGN IN </h4>
             <h4>To Access the Portal</h4>
             <div className="md-form md-outline">
@@ -33,10 +42,10 @@ function Login(props) {
 
                 <input type="text" className="form-control" value={password} placeholder="Enter password here" onChange={handelPasswordChange}/>
             </div>
-             <button type="btn btn-primary" name="submit" onClick={()=>this.login()}>Submit</button>
-            <a className="link" href="#">Forgot password? Click here.</a>
+             <input type="button" className="btn btn-primary" value="Submit" onClick={login} />
+                <a className="link" href="#">Forgot password? Click here.</a>
            
-            </form>
+            </div>
 
             </div>
         </div>
