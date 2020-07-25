@@ -5,8 +5,8 @@ function Login(props) {
     const [userName, setUserName] = React.useState('');
     const [password, setPassword] = React.useState('');
     const login =()=>{
-        console.log("loginhere")
-        fetch('http://127.0.0.1:8000/auth/login/',{
+        console.log("loginhere");
+        fetch('http://127.0.0.1:8000/auth/login/',{mode: 'no-cors',
             method:'post',
             body:JSON.stringify({email:userName, password:password})
         }).then(res=>res.json()).then(data=>{

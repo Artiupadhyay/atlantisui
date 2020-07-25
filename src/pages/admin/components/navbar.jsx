@@ -12,6 +12,9 @@ function Navbar(props) {
       <a className="content p-4 nav-link" href="/admin/addschool">AddUser</a>
     </li>
     <li className="nav-item">
+      <a className="content p-4 nav-link" href="/school/schooldash">Master</a>
+    </li>
+    <li className="nav-item">
       <a className=" content p-4 nav-link " href="/admin/viewschool">ViewUser</a>
     </li>
   </ul>

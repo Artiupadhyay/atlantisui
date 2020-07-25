@@ -17,9 +17,9 @@ function AddSchool(props) {
   
 
     return(
-      
+      <>
+      <Navbar/>
          <div className="ml-2 schoolform ">
-            <Navbar/>
              <h1 className="bd-highlight">Add School</h1>
         <div className="form-group row">
          <label for="Username" className="col-sm-2 ">UserName</label>
@@ -56,6 +56,7 @@ function AddSchool(props) {
     <input type="submit" className=" form-control"  name="submit"  onClick={()=>this.AddSchool()}/>
     </div>
 </div>
+</>
         
     );
 }
