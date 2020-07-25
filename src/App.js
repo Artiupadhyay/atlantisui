@@ -7,6 +7,10 @@ import Dashboard from './pages/admin/dashboard';
 import AddSchool from './pages/admin/addschool';
 import ViewSchool from './pages/admin/viewschool';
 import SchoolDash from './pages/school/schooldash';
+import EmployeeReg from './pages/school/employeereg';
+import AddStudent from './pages/school/addstudent';
+import ViewEmployeeReg from './pages/school/viewemployee';
+import ViewStudents from './pages/school/viewstudents';
 import {
     BrowserRouter as Router,
     Switch,
@@ -20,9 +24,12 @@ function App() {
            <Route path='/' exact component={Login} />
            <Route path='/admin/dashboard/' exact component ={Dashboard} />
            <Route path='/admin/addschool/' exact component ={AddSchool} />
-
            <Route path='/admin/viewschool/' exact component ={ViewSchool} />
            <Route path='/school/schooldash/' exact component ={SchoolDash} />
+           <Route path='/school/employeereg/' exact component ={EmployeeReg} />
+           <Route path='/school/addstudent/' exact component ={AddStudent} />
+           <Route path='/school/viewemployee/' exact component ={ViewEmployeeReg}/>
+           <Route path='/school/viewstudents/' exact component ={ViewStudents} />
         </Router>
     );
 }
