@@ -5,6 +5,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import Login from './pages/login';
 import Dashboard from './pages/admin/dashboard';
 import AddSchool from './pages/admin/addschool';
+import ViewSchool from './pages/admin/viewschool';
 import {
     BrowserRouter as Router,
     Switch,
@@ -18,6 +19,8 @@ function App() {
            <Route path='/' exact component={Login} />
            <Route path='/admin/dashboard/' exact component ={Dashboard} />
            <Route path='/admin/addschool/' exact component ={AddSchool} />
+
+           <Route path='/admin/viewschool/' exact component ={ViewSchool} />
         </Router>
     );
 }

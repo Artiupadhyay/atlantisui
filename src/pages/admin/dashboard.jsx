@@ -5,8 +5,9 @@ import Navbar from './components/navbar';
 function Dashboard(props) {
     
     return(
+        
            <div className="row d-flex justify-content">
-               <Navbar />
+                <Navbar/>
             </div>
 
     );
