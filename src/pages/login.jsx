@@ -1,18 +1,63 @@
 import React from 'react';
 import {connect} from'react-redux';
+import config from './config';
+import { Redirect } from 'react-router-dom';
 
 function Login(props) {
     const [userName, setUserName] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const login =()=>{
-        console.log("loginhere");
-        fetch('http://127.0.0.1:8000/auth/login/',{mode: 'no-cors',
+   
+    const [userInfo, setuserInfo] = React.useState(null);
+    const [error, seterror] = React.useState(null);
+    const [message, setMessage] = React.useState(null);
+    
+    var status = null;
+    var url = config.baseurl+'auth/login/';
+    var options = {
+            headers:{'Content-Type': 'application/json'},
             method:'post',
             body:JSON.stringify({email:userName, password:password})
-        }).then(res=>res.json()).then(data=>{
-            console.log("Data :-"+data);
-        }).catch(err=>console.log(err));
-    }
+        }
+
+    const login =()=>{
+        fetch(url,options)
+        .then(res=>{
+            status  = res.status;
+            return  res.json();
+        })
+        .then(data=>{
+            console.log(status);
+            if(status === 200 || status === 201){
+                seterror(null);
+                setMessage("Login Successfull")
+                setuserInfo({...data});
+                console.log(userInfo);
+                localStorage.setItem('role', userInfo.role);
+                localStorage.setItem('token', userInfo.accessToken);
+                localStorage.setItem('image',userInfo.image);
+                if(userInfo.role === 'Admin'){
+                    props.history.push('/admin/dashboard/');
+                }
+                if(userInfo.role === 'School'){
+                    props.history.push('/school/schooldash/');
+                }
+                if(userInfo.role === 'Teacher'){
+                    return <Redirect to = '/'/>;
+                }
+                if(userInfo.role === 'Reception'){
+                    return <Redirect to = '/'/>;
+                }
+                if(userInfo.role === 'Accountant'){
+                    return <Redirect to = '/'/>;
+                }
+            }
+            else{
+                setMessage(null);
+                seterror(data.message || data.email[0])
+            }
+        })
+        .catch(err=>console.log(err));
+    };
 
     const handelUserNameChange = (event)=>{
         setUserName(event.target.value);
@@ -30,6 +75,7 @@ function Login(props) {
                </div>
                <div className="col-md-3">
             <div className="form">
+            {error?<div className="alert alert-danger" role="alert">{error}</div> :(message ? <div className="alert alert-primary" role="alert">{message}</div>:null)}
             <h4 className="font-weight-bold mb-3">SIGN IN </h4>
             <h4>To Access the Portal</h4>
             <div className="md-form md-outline">
