@@ -17,6 +17,9 @@ function Navbar(props) {
     <li className="nav-item">
       <a className=" content p-4 nav-link " href="/admin/viewschool">ViewUser</a>
     </li>
+    <li className="nav-item">
+      <a className=" content p-4 nav-link " href="/logout">Logout</a>
+    </li>
   </ul>
   
   

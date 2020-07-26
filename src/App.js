@@ -11,6 +11,7 @@ import EmployeeReg from './pages/school/employeereg';
 import AddStudent from './pages/school/addstudent';
 import ViewEmployeeReg from './pages/school/viewemployee';
 import ViewStudents from './pages/school/viewstudents';
+import Logout from './pages/logout';
 import {
     BrowserRouter as Router,
     Switch,
@@ -22,9 +23,12 @@ function App() {
     return (    
         <Router>
            <Route path='/' exact component={Login} />
+           <Route path='/logout' exact component={Logout} />
+
            <Route path='/admin/dashboard/' exact component ={Dashboard} />
            <Route path='/admin/addschool/' exact component ={AddSchool} />
            <Route path='/admin/viewschool/' exact component ={ViewSchool} />
+           
            <Route path='/school/schooldash/' exact component ={SchoolDash} />
            <Route path='/school/employeereg/' exact component ={EmployeeReg} />
            <Route path='/school/addstudent/' exact component ={AddStudent} />

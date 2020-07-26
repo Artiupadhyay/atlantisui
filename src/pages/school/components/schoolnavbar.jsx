@@ -66,6 +66,9 @@ function SchoolNavbar(props){
       <a href="#">3</a>
     </div> 
       </li>
+      <li className="nav-item">
+      <a className=" content p-4 nav-link " href="/logout">Logout</a>
+    </li>
     </ul>
     </div>
     

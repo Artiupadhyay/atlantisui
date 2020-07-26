@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from'react-redux';
 import config from './config';
-import { Redirect } from 'react-router-dom';
 
 function Login(props) {
     const [userName, setUserName] = React.useState('');
@@ -26,7 +25,6 @@ function Login(props) {
             return  res.json();
         })
         .then(data=>{
-            console.log(status);
             if(status === 200 || status === 201){
                 seterror(null);
                 setMessage("Login Successfull")
@@ -42,13 +40,13 @@ function Login(props) {
                     props.history.push('/school/schooldash/');
                 }
                 if(userInfo.role === 'Teacher'){
-                    return <Redirect to = '/'/>;
+                    props.history.push('/teacher/schooldash/');
                 }
                 if(userInfo.role === 'Reception'){
-                    return <Redirect to = '/'/>;
+                    props.history.push('/reception/schooldash/');
                 }
                 if(userInfo.role === 'Accountant'){
-                    return <Redirect to = '/'/>;
+                    props.history.push('/accountant /schooldash/');
                 }
             }
             else{
