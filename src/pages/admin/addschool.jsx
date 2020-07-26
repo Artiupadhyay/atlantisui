@@ -1,9 +1,11 @@
 import React from 'react';
 import Navbar from './components/navbar';
 import config from './../config';
+import { Redirect } from 'react-router-dom';
 
 
 function AddSchool(props) {
+  const [redirect, setRedirect] = React.useState(false);
   const [userName, setuserName] = React.useState('');
   const [password, setpassword] = React.useState('');
   const [email, setemail] = React.useState('');
@@ -13,7 +15,7 @@ function AddSchool(props) {
   const [error, seterror] = React.useState(null);
   const [message, setMessage] = React.useState(null);
 
-  
+
   const handeluserNameChange = (event)=>{
       setuserName(event.target.value);
   }
@@ -63,10 +65,18 @@ function AddSchool(props) {
     .catch(err=> console.log("Error"+err));
 
   }
-  
+
+  if(localStorage.getItem('role')!='Admin' && !redirect){
+    localStorage.removeItem('token');
+    localStorage.removeItem('image');
+    localStorage.removeItem('role');
+    setRedirect(true);
+  }
+    
 
     return(
       <>
+      {redirect?<Redirect to = '/' />:null}
       <Navbar/>
       {error?<div className="alert alert-danger absolute" role="alert">{error}</div> :(message ? <div className="alert alert-primary" role="alert">{message}</div>:null)}
          <div className="ml-2 schoolform ">

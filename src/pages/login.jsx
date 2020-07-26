@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from'react-redux';
 import config from './config';
+import { Redirect } from 'react-router-dom';
 
 function Login(props) {
     const [userName, setUserName] = React.useState('');
@@ -9,7 +10,10 @@ function Login(props) {
     const [userInfo, setuserInfo] = React.useState(null);
     const [error, seterror] = React.useState(null);
     const [message, setMessage] = React.useState(null);
-    
+
+    const [redirect, setRedirect] = React.useState(false);
+    const [path , setpath] = React.useState(null);
+
     var status = null;
     var url = config.baseurl+'auth/login/';
     var options = {
@@ -26,28 +30,27 @@ function Login(props) {
         })
         .then(data=>{
             if(status === 200 || status === 201){
-                seterror(null);
-                setMessage("Login Successfull")
-                setuserInfo({...data});
-                console.log(userInfo);
-                localStorage.setItem('role', userInfo.role);
-                localStorage.setItem('token', userInfo.accessToken);
-                localStorage.setItem('image',userInfo.image);
-                if(userInfo.role === 'Admin'){
+                localStorage.setItem('role', data.role);
+                localStorage.setItem('token', data.accessToken);
+                localStorage.setItem('image',data.image);
+                // setuserInfo({...data});
+                if(data.role === 'Admin'){
                     props.history.push('/admin/dashboard/');
                 }
-                if(userInfo.role === 'School'){
+                if(data.role === 'School'){
                     props.history.push('/school/schooldash/');
                 }
-                if(userInfo.role === 'Teacher'){
+                if(data.role === 'Teacher'){
                     props.history.push('/teacher/schooldash/');
                 }
-                if(userInfo.role === 'Reception'){
+                if(data.role === 'Reception'){
                     props.history.push('/reception/schooldash/');
                 }
-                if(userInfo.role === 'Accountant'){
+                if(data.role === 'Accountant'){
                     props.history.push('/accountant /schooldash/');
                 }
+                seterror(null);
+                setMessage("Login Successfull")
             }
             else{
                 setMessage(null);
@@ -63,12 +66,48 @@ function Login(props) {
     const handelPasswordChange = (event)=>{
         setPassword(event.target.value);
     }
-    
-    
-    return(
+    if(localStorage.getItem('token') && !redirect && ! path){
+        fetch(config.baseurl+'auth/check/token',{
+            method:'get',
+            headers:{
+                'auth':localStorage.getItem('token'),
+            }
+        }).then(res =>{
+            status = res.status;
+            return res.json();
+        }).then(data=>{
+            if(status === 200){
+                if(localStorage.getItem('role') === 'Admin'){
+                    setpath( '/admin/dashboard/');
+                }
+                if(localStorage.getItem('role') === 'School'){
+                    setpath('/school/schooldash/');
+                }
+                if(localStorage.getItem('role') === 'Teacher'){
+                    setpath('/teacher/teacherdash/');
+                }
+                if(localStorage.getItem('role') === 'Reception'){
+                    setpath('/reception/receptiondash/');
+                }
+                if(localStorage.getItem('role') === 'Accountant'){
+                    setpath('/accountant /accountant/');
+                }
+                setRedirect(true);
+            }
+            else {
+                localStorage.removeItem('token');
+                localStorage.removeItem('role');
+                localStorage.removeItem('image');
+            }
+        })
+
+    }
+
+    return(<>
+            {(redirect || path)? <Redirect to ={path} />:null}
            <div className="p-3 image row d-flex justify-content-center align align-items-center">
                <div className="col-md-6">
-                   <h1 className=" content font-weight-bold mb-3">Welcome To Atlantis </h1>
+                <h1 className=" content font-weight-bold mb-3">Welcome To Atlantis </h1>
                    <h2 className="content">Learning is fun!!</h2>
                </div>
                <div className="col-md-3">
@@ -93,7 +132,7 @@ function Login(props) {
 
             </div>
         </div>
-
+        </>
     );
 }
  const mapStateToProps = (state)=>{
