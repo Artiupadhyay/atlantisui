@@ -4,15 +4,16 @@ import config from './../config';
 
 
 function AddSchool(props) {
-  const [userName, setuserName] = React.useState(null);
-  const [password, setpassword] = React.useState(null);
-  const [email, setemail] = React.useState(null);
-  const [role, setrole] = React.useState(null);
+  const [userName, setuserName] = React.useState('');
+  const [password, setpassword] = React.useState('');
+  const [email, setemail] = React.useState('');
+  const [role, setrole] = React.useState('');
   const [image, setimage] = React.useState(null);
-
+  const [status, setstatus] = React.useState(null);
+  const [error, seterror] = React.useState(null);
+  const [message, setMessage] = React.useState(null);
 
   
-
   const handeluserNameChange = (event)=>{
       setuserName(event.target.value);
   }
@@ -47,9 +48,18 @@ function AddSchool(props) {
       body:formData
     })
     .then(res=>{
-      console.log(res.status);
+      setstatus(res.status);
       return res.json();
-    }).then(data=>console.log(data))
+    }).then(data=>{
+      if(status == 201){
+        seterror(null);
+        setMessage(role+" register successful!")
+      }
+      else{
+        setMessage(null);
+        seterror(data.message || data.email[0]);
+      }
+    })
     .catch(err=> console.log("Error"+err));
 
   }
@@ -58,6 +68,7 @@ function AddSchool(props) {
     return(
       <>
       <Navbar/>
+      {error?<div className="alert alert-danger absolute" role="alert">{error}</div> :(message ? <div className="alert alert-primary" role="alert">{message}</div>:null)}
          <div className="ml-2 schoolform ">
              <h1 className="bd-highlight">Add School</h1>
         <div className="form-group row">
@@ -67,19 +78,19 @@ function AddSchool(props) {
        </div>
       </div>
      <div className="form-group row">
-    <label for="Password" className="col-sm-2 ">Password</label>
+    <label  className="col-sm-2 ">Password</label>
     <div className="col-md-4">
       <input type="text" className="form-control"  value={password} onChange={handelpasswordChange}/>
     </div>
   </div>
   <div className="form-group row">
-    <label for="Email" className="col-sm-2 ">Email</label>
+    <label className="col-sm-2 ">Email</label>
     <div className="col-md-4">
       <input type="text" className="form-control" value={email} onChange={handelEmailChange}/>
     </div>
   </div>
                                       <div className="form-group row">
-                                        <label for="Role" className="col-sm-2 ">Role</label>
+                                        <label className="col-sm-2 ">Role</label>
                                       <select onChange = {handelSelect}>
                                       <option value="---">---</option>
                                         <option value="Admin">Admin</option>
@@ -90,7 +101,7 @@ function AddSchool(props) {
                                       </select>
                                       </div>
   <div className=" p-2 form-group row">
-    <label for="img">Select image:</label>
+    <label>Select image:</label>
     <input type="file" id="img" name="img" accept="image/*" onChange={handelimageChange} />
     <input type="submit" className=" form-control"  name="submit"  onClick={addSchool}/>
     </div>

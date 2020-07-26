@@ -51,7 +51,7 @@ function Login(props) {
             }
             else{
                 setMessage(null);
-                seterror(data.message || data.email[0])
+                seterror(data.message || data.email[0]);
             }
         })
         .catch(err=>console.log(err));
