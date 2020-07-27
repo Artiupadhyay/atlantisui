@@ -12,4 +12,5 @@ function SchoolDash(props) {
 
     );
 }
+
 export default SchoolDash;

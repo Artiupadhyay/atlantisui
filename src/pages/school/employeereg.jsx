@@ -23,7 +23,7 @@ function EmployeeReg(props) {
     return(
       <>
       <SchoolNav/>
-         <div className="ml-2 schoolform ">
+         <div className="ml-2 schoolform bg ">
              <h1 className="bd-highlight">Employee Registration</h1>
         <div className="form-group row">
          <label for="Username" className="col-sm-2 ">UserName</label>

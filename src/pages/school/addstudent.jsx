@@ -23,7 +23,7 @@ function AddStudent(props) {
     return(
       <>
       <SchoolNav/>
-         <div className="ml-2 schoolform ">
+         <div className="ml-2 schoolform  justify-content-center align-items-center">
              <h1 className="bd-highlight">Employee Registration</h1>
         <div className="form-group row">
          <label for="Username" className="col-sm-2 ">UserName</label>
@@ -48,8 +48,9 @@ function AddStudent(props) {
   </div>
   <div className=" p-2 form-group row">
     <label for="img">Select image:</label>
-    <input type="file" id="img" name="img" accept="image/*"/>
-    <input type="submit" className=" form-control"  name="submit"  onClick={()=>this.AddStudent()}/>
+    <input type="file" id="img" name="img" accept="image/*"/></div>
+    <div className="control">
+    <input type="submit" className=" col-md-6 form-control"  name="submit"  onClick={()=>this.AddStudent()}/>
     </div>
 </div>
 </>
