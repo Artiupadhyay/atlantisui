@@ -105,7 +105,7 @@ function Login(props) {
 
     return(<>
             {(redirect || path)? <Redirect to ={path} />:null}
-           <div className="p-3 image row d-flex justify-content-center align align-items-center">
+           <div className="p-3 image row d-flex justify-content-center align align-items-center ">
                <div className="col-md-6">
                 <h1 className=" content font-weight-bold mb-3">Welcome To Atlantis </h1>
                    <h2 className="content">Learning is fun!!</h2>
@@ -115,17 +115,18 @@ function Login(props) {
             {error?<div className="alert alert-danger" role="alert">{error}</div> :(message ? <div className="alert alert-primary" role="alert">{message}</div>:null)}
             <h4 className="font-weight-bold mb-3">SIGN IN </h4>
             <h4>To Access the Portal</h4>
-            <div className="md-form md-outline">
+            <div className=" mt-2 md-form md-outline">
                 Username:
-                <input type="text" className="form-control" value = {userName} placeholder="Enter your email here" onChange={handelUserNameChange}/>
+                <input type="text" className="mt-2 form-control" value = {userName} placeholder="Enter your email here" onChange={handelUserNameChange}/>
             </div>
-            <div className="md-form md-outline">
+            <div className=" mt-2 md-form md-outline">
                 Password:
 
 
-                <input type="text" className="form-control" value={password} placeholder="Enter password here" onChange={handelPasswordChange}/>
+                <input type="text" className=" mt-2 form-control" value={password} placeholder="Enter password here" onChange={handelPasswordChange}/>
             </div>
-             <input type="button" className="btn btn-primary" value="Submit" onClick={login} />
+            <div className="md-form md-outline">
+             <input type="button" className=" form-control mt-4 btn btn-primary" value="Submit" onClick={login} /></div>
                 <a className="link" href="#">Forgot password? Click here.</a>
            
             </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from'react-redux';
 import Navbar from './components/navbar';
+import DashboardCard from './components/dashboardcard';
 
 function Dashboard(props) {
     const [redirect, setRedirect] = React.useState(false);
@@ -16,6 +17,7 @@ function Dashboard(props) {
         <>            {redirect?<Redirect to = '/' />:null}
            <div className="row d-flex justify-content">
                 <Navbar/>
+                <DashboardCard/>
             </div>
             </>
 

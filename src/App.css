@@ -1,5 +1,6 @@
-body{
-  overflow:hidden;
+.schoolform{
+  margin-left:25vw;
+  margin-right:25vw;
 }
 .App {
   text-align: center;
@@ -56,7 +57,7 @@ body{
 }
 .bg{
   background-image: url("bg4.jpg");
-  width:100vw;
+  width:105vw;
 }
 
 .image{

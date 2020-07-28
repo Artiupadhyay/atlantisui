@@ -29,13 +29,15 @@ import config from './../../config';
 
      return(
          <>
-         {props.name?<div className="card">
+         {props.name?<div className=" d-flex row justify content between card">
+             <div className="col-md-4">
          <img className="card-img-top" src={"data:image/jpeg;base64,"+props.image} alt="Card image cap"/>
          <div className="card-body">
             <p className="card-text">Name:-{props.name}</p>
             <p className="card-text">Email:-{props.email}</p>
             <p className="card-text">Account Status:-{active.toString()}</p>
-            <button onClick={changeStatus}>{active ? "Deactivate account": "Activate account"}</button>
+            <button onClick={changeStatus} className={active?" btn btn-danger":"btn btn-success"}>{active ? "Deactivate account": "Activate account"}</button>
+         </div>
          </div>
           </div>:null}
         </>

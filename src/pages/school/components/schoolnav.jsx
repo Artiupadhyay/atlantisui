@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 
 function SchoolNav(props){
     return(
-      <div class="navbar">
-      <ul className="nav nav-pills bg">
+      <div class=" d-flex row navbar bg">
+      <div className=" col-md-10 nav nav-pills bg">
       <li className=" p-2 content nav-item">
         <a className="content" ><h1>Atlantis</h1></a>
       </li>
@@ -68,9 +68,17 @@ function SchoolNav(props){
     </div>
     </div> 
       </li>
-        <li>
-        <a className=" ml-5 content p-4 nav-link" href="/logout">Logout</a></li>
-    </ul>
+      </div>
+      <div className="col-md-1">
+    <div class="dropdown">
+        <a className="content p-4 nav-link" href="#">Profile</a>
+    <div class="dropdown-content">
+      <a href="#">Name</a>
+      <a href="#">Role</a>
+      <a href="./logout">Logout</a>
+    </div>
+   </div> 
+  </div>
     </div>
     
     );

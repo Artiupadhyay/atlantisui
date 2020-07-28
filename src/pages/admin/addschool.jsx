@@ -79,29 +79,26 @@ function AddSchool(props) {
       {redirect?<Redirect to = '/' />:null}
       <Navbar/>
       {error?<div className="alert alert-danger absolute" role="alert">{error}</div> :(message ? <div className="alert alert-primary" role="alert">{message}</div>:null)}
-         <div className="ml-2 schoolform ">
+         <div className="schoolform ">
              <h1 className="bd-highlight">Add School</h1>
-        <div className="form-group row">
-         <label className="col-sm-2 ">UserName</label>
-        <div className="col-md-4">
-        <input type="text" className="form-control"  value={userName} onChange={handeluserNameChange}/>
-       </div>
+        <div className=" mt-5 form-group row">
+         <label className=" col-md-4 username">UserName</label>
+        
+        <input type="text" className=" col-md-4 form-control"  value={userName} onChange={handeluserNameChange}/>
+       
       </div>
      <div className="form-group row">
-    <label  className="col-sm-2 ">Password</label>
-    <div className="col-md-4">
-      <input type="text" className="form-control"  value={password} onChange={handelpasswordChange}/>
-    </div>
+    <label  className="  col-md-4 password ">Password</label>
+      <input type="text" className="  col-md-4 form-control"  value={password} onChange={handelpasswordChange}/>
+    
   </div>
   <div className="form-group row">
-    <label className="col-sm-2 ">Email</label>
-    <div className="col-md-4">
-      <input type="text" className="form-control" value={email} onChange={handelEmailChange}/>
-    </div>
+    <label className=" col-md-4 Email ">Email</label>
+      <input type="text" className="  col-md-4 form-control" value={email} onChange={handelEmailChange}/>
   </div>
                                       <div className="form-group row">
-                                        <label className="col-sm-2 ">Role</label>
-                                      <select onChange = {handelSelect}>
+                                        <label className="col-md-4 ">Role</label>
+                                      <select  className=" col-md-4" onChange = {handelSelect}>
                                       <option value="---">---</option>
                                         <option value="Admin">Admin</option>
                                         <option value="School">School</option>
@@ -110,10 +107,11 @@ function AddSchool(props) {
                                         <option value="Student">Student</option>
                                       </select>
                                       </div>
-  <div className=" p-2 form-group row">
-    <label>Select image:</label>
-    <input type="file" id="img" name="img" accept="image/*" onChange={handelimageChange} />
-    <input type="submit" className=" form-control"  name="submit"  onClick={addSchool}/>
+  <div className=" form-group row">
+    <label className=" ml-5 col-md-4 select">Select image:</label>
+    <input type="file" id="img" name="img" accept="image/*" onChange={handelimageChange} /></div>
+    <div className=" control">
+    <input type="submit" className=" col-md-8 form-control"  name="submit"  onClick={addSchool}/>
     </div>
 </div>
 </>
