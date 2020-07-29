@@ -6,7 +6,7 @@ import DashboardCard from './components/dashboardcard';
 
 function Dashboard(props) {
     const [redirect, setRedirect] = React.useState(false);
-    if(localStorage.getItem('role')!='Admin' && !redirect){
+    if(localStorage.getItem('role')!=='Admin' && !redirect){
         localStorage.removeItem('token');
         localStorage.removeItem('image');
         localStorage.removeItem('role');

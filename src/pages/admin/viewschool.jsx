@@ -30,7 +30,7 @@ function ViewSchool(){
         setCheckSchool(false);
     }).catch(err=>console.log(err));
 }
-if(localStorage.getItem('role')!='Admin' && !redirect){
+if(localStorage.getItem('role')!=='Admin' && !redirect){
     localStorage.removeItem('token');
     localStorage.removeItem('image');
     localStorage.removeItem('role');

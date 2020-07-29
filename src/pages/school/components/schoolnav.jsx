@@ -1,86 +1,44 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Navbar, Nav ,NavDropdown, Image, Container} from 'react-bootstrap'
+import config from '../../config';
 
 function SchoolNav(props){
     return(
-      <div class=" d-flex row navbar bg">
-      <div className=" col-md-10 nav nav-pills bg">
-      <li className=" p-2 content nav-item">
-        <a className="content" ><h1>Atlantis</h1></a>
-      </li>
-      
-      <li className="nav-item">
-        <div class="dropdown">
-        <a className="content p-4 nav-link" href="#">School Master</a>
-    <div class="dropdown-content">
-      <a href="/school/addstudent">Add Student</a>
-      <a href="/school/viewstudent">View School</a>
-      <a href="#">View School Report</a>
-    </div>
-   </div> 
-                                    
-      </li>
-      <li className="nav-item">
-      <div class="dropdown">
-        <a className="content p-4 nav-link" href="#"> Fee Master</a>
-        <div class="dropdown-content">
-      <a href="">Add fee Structure</a>
-      <a href="">View Fee due</a>
-      <a href="#">Deposit Fee</a>
-    </div>
-   </div> 
-      </li>
-      <li className="nav-item">
-      <div class="dropdown">
-        <a className=" content p-4 nav-link " href="#">Attendance Master</a>
-        <div class="dropdown-content">
-      <a href="#">View Employee Attendance</a>
-      <a href="#">View Student Attendance</a>
-    </div>
-   </div> 
-      </li>
-      <li className="nav-item">
-      <div class="dropdown">
-        <a className=" content p-4 nav-link " href="#">Employee Master</a>
-        <div class="dropdown-content">
-      <a href="/school/employeereg">Add Employee</a>
-      <a href="">View classTeacher</a>
-      <a href="/school/viewemployeereg">View Employee</a>
-    </div>
-   </div> 
-      </li>
-      <li className="nav-item">
-      <div class="dropdown">
-        <a className=" content p-4 nav-link " href="#">Class Master</a>
-        <div class="dropdown-content">
-      <a href="#">Add Class</a>
-      <a href="#">View Classes </a>
-    </div>
-   </div> 
-      </li>
-      <li className="nav-item">
-        <div className="dropdown">
-        <a className=" content p-4 nav-link " href="#">Education Portal</a>
-        <div class="dropdown-content">
-      <a href="#">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-    </div>
-    </div> 
-      </li>
-      </div>
-      <div className="col-md-1">
-    <div class="dropdown">
-        <a className="content p-4 nav-link" href="#">Profile</a>
-    <div class="dropdown-content">
-      <a href="#">Name</a>
-      <a href="#">Role</a>
-      <a href="./logout">Logout</a>
-    </div>
-   </div> 
-  </div>
-    </div>
-    
+      <Navbar bg="info" expand="md" variant="light">
+        <Container>
+        <Navbar.Brand href="#home">Atlantis</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <NavDropdown title="Student" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/school/addstudent">Add Student</NavDropdown.Item>
+              <NavDropdown.Item href="/school/viewstudent">View Student</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Attendance" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#">View Employee Attendance</NavDropdown.Item>
+              <NavDropdown.Item href="#">View Student Attendance</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Employee" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/school/employeereg">Add Employee</NavDropdown.Item>
+              <NavDropdown.Item href="/school/viewemployeereg">View Employee</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Class" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/school/employeereg">Add Class</NavDropdown.Item>
+              <NavDropdown.Item href="/school/viewemployeereg">View Classes</NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="#link">Education Portal</Nav.Link>
+          </Nav>
+          <Nav>
+          <NavDropdown title={localStorage.getItem('name') || "User name"} id="basic-nav-dropdown">
+              <NavDropdown.Item href="/school/employeereg"><Image src={require('./../../../user.png')} height={50}/></NavDropdown.Item>
+              <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
+          </NavDropdown>  
+          </Nav>
+          
+        </Navbar.Collapse>
+        </Container>
+      </Navbar>
     );
 }
 export default SchoolNav;

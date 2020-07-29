@@ -4,11 +4,11 @@ import SchoolNav from './components/schoolnav';
 
 function SchoolDash(props) {
     
-    return(
-        
+    return(<>
+            <SchoolNav/>
            <div className="row d-flex justify-content">
-                <SchoolNav/>
             </div>
+            </>
 
     );
 }
