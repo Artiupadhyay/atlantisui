@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import SchoolNav from './components/schoolnav';
+import {Form,Row,Col,Button} from 'react-bootstrap';
     
 
 function EmployeeReg(props) {
@@ -21,38 +22,44 @@ function EmployeeReg(props) {
   
 
     return(
-      <>
+      <Container-Fluid>
       <SchoolNav/>
-         <div className="ml-2 schoolform bg ">
-             <h1 className="bd-highlight">Employee Registration</h1>
-        <div className="form-group row">
-         <label for="Username" className="col-sm-2 ">UserName</label>
-        <div className="col-md-4">
-        <input type="text" className="form-control"  value={UserName} onChange={handelUserNameChange}/>
-       </div>
-      </div>
-     <div className="form-group row">
-    <label for="Password" className="col-sm-2 ">Password</label>
-    <div className="col-md-4">
-      <input type="text" className="form-control"  value={Password} onChange={handelPasswordChange}/>
-    </div>
-  </div>
-  <div className="form-group row">
-    <label for="Email" className="col-sm-2 ">Email</label>
-    <div className="col-md-4">
-      <input type="text" className="form-control"  value={Email} onChange={handelEmailChange}/>
-    </div>
-  </div>       
-  <div className="form-group row">
-      <label for="Role" className="col-sm-2 ">Role</label>
-  </div>
-  <div className=" p-2 form-group row">
-    <label for="img">Select image:</label>
-    <input type="file" id="img" name="img" accept="image/*"/>
-    <input type="submit" className=" form-control"  name="submit"  onClick={()=>this.AddEmployee()}/>
-    </div>
-</div>
-</>
+      <Row noGutters={true} className="justify-content-md-center">
+      <Form.Group className="mt-5  ml-auto mr-auto">
+      <Row className="mt-2"> 
+      <Col xs={4}>
+      UserName:</Col>
+      <Col xs={6}><Form.Control type="text" placeholder="Username" />
+      </Col></Row>
+      <Row className="mt-2">
+        <Col xs={4}>
+      Password:</Col>
+      <Col xs={6}>
+      <Form.Control type="text" placeholder="Password" /></Col></Row>
+      <Row className="mt-2">
+        <Col xs={4}>
+      Email:</Col>
+      <Col xs={6}>
+      <Form.Control type="text" placeholder="Email" /></Col></Row>
+      <Row className="mt-2">
+        <Col xs={4}>
+      Role:</Col>
+      <Col xs={6}>
+      <Form.Control type="text" value="Student" /></Col></Row>
+      <Row className="mt-2">
+      <Form.File
+      id="custom-file-translate-scss"
+      label="Custom file input"
+      lang="en"
+      custom
+    />
+</Row>
+<Row className="mt-2">
+      <Button variant="primary">Submit</Button>{' '}</Row>
+      </Form.Group>
+</Row>
+      </Container-Fluid> 
+      
         
     );
 }

@@ -1,15 +1,24 @@
 import React from 'react';
+import {Card,Button,Container,Row,Col} from 'react-bootstrap';
  function SchoolCard(props){
      return(
-        <div className=" ml-2 mr-2 d-flex row card justify-content-between">
-            <div className="col-md-5">
-        <img className="card-img-top" src="..." alt="Card image cap"/>
-        <div className="card-body">
-        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        </div>
-         </div>
-
+         <Container>
+             <Row>
+                 <Col className=" ml-auto mr-auto" >
+        <Card>
+        <Card.Img variant="top" src="holder.js/100px180" />
+        <Card.Body>
+          <Card.Title>Card Title</Card.Title>
+          <Card.Text>
+            Some quick example text to build on the card title and make up the bulk of
+            the card's content.
+          </Card.Text>
+          <Button variant="primary">Go somewhere</Button>
+        </Card.Body>
+      </Card>
+      </Col>
+      </Row>
+      </Container>
      );
  }
  export default SchoolCard;

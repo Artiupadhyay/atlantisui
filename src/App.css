@@ -1,36 +1,16 @@
-.schoolform{
-  margin-left:25vw;
-  margin-right:25vw;
-}
+
 .App {
   text-align: center;
 }
 .App-logo {
   pointer-events: none;
 }
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: rgb(193, 120, 226);
-  box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.navbar{
+  box-shadow: 12px 10px 1px  rgba(102, 21, 84, 0.2);
+  background-color:purple;
+  color: white;
 }
 
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-  
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -52,13 +32,7 @@
 .App-link {
   color: #61dafb;
 }
-.content{
-  color:white;
-}
-.bg{
-  background-image: url("bg4.jpg");
-  width:105vw;
-}
+
 
 .image{
   background-image: url("bg5.jpg");
@@ -69,9 +43,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-}
-.form{
-  color:#fff;
 }
 
 .navItem {

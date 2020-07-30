@@ -5,7 +5,7 @@ import config from '../../config';
 
 function SchoolNav(props){
     return(
-      <Navbar bg="info" expand="md" variant="light">
+      <Navbar className="shadow-lg navbar" expand="md" variant="dark">
         <Container>
         <Navbar.Brand href="#home">Atlantis</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

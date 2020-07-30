@@ -4,13 +4,11 @@ import SchoolCard from './components/schoolcard';
 
 function ViewStudents(){
     return(
-        <>
+        <Container-Fluid>
         <SchoolNav />
-        <div className="d-flex col-4">
             <SchoolCard/>
-        </div>
-       </>
-
+            </Container-Fluid>
+    
     );
 }
 export default ViewStudents;

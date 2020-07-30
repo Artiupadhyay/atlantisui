@@ -12,6 +12,7 @@ import AddStudent from './pages/school/addstudent';
 import ViewEmployeeReg from './pages/school/viewemployee';
 import ViewStudents from './pages/school/viewstudents';
 import Logout from './pages/logout';
+import AddClass from './pages/school/addclass';
 import {
     BrowserRouter as Router,
     Switch,
@@ -34,6 +35,7 @@ function App() {
            <Route path='/school/addstudent/' exact component ={AddStudent} />
            <Route path='/school/viewemployee/' exact component ={ViewEmployeeReg}/>
            <Route path='/school/viewstudents/' exact component ={ViewStudents} />
+           <Route path='/school/addclass/' exact component ={AddClass} />
         </Router>
     );
 }

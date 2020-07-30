@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/navbar';
 import config from './../config';
 import { Redirect } from 'react-router-dom';
+import {Form,Row,Col,Button,Dropdown,InputGroup,FormControl,DropdownButton} from 'react-bootstrap';
 
 
 function AddSchool(props) {
@@ -75,47 +76,60 @@ function AddSchool(props) {
     
 
     return(
-      <>
-      {redirect?<Redirect to = '/' />:null}
+      <Container-Fluid>
       <Navbar/>
-      {error?<div className="alert alert-danger absolute" role="alert">{error}</div> :(message ? <div className="alert alert-primary" role="alert">{message}</div>:null)}
-         <div className="schoolform ">
-             <h1 className="bd-highlight">Add School</h1>
-        <div className=" mt-5 form-group row">
-         <label className=" col-md-4 username">UserName</label>
-        
-        <input type="text" className=" col-md-4 form-control"  value={userName} onChange={handeluserNameChange}/>
+      <Row noGutters={true} className="justify-content-md-center">
+      <Form.Group className="mt-5  ml-auto mr-auto">
+      <Row className="mt-2"> 
+      <Col xs={4}>
+      UserName:</Col>
+      <Col xs={6}><Form.Control type="text" placeholder="Username" />
+      </Col></Row>
+      <Row className="mt-2">
+        <Col xs={4}>
+      Password:</Col>
+      <Col xs={6}>
+      <Form.Control type="text" placeholder="Password" /></Col></Row>
+      <Row className="mt-2">
+        <Col xs={4}>
+      Email:</Col>
+      <Col xs={6}>
+      <Form.Control type="text" placeholder="Email" /></Col></Row>
+     
+      <InputGroup>
+    <FormControl
+      placeholder="Role"
+      aria-label="Recipient's username"
+      aria-describedby="basic-addon2"
+    />
+
+    <DropdownButton
+      as={InputGroup.Append}
+      variant="outline-secondary"
+      title="Dropdown"
+      id="input-group-dropdown-2"
+    >
+      <Dropdown.Item href="#">Admin</Dropdown.Item>
+      <Dropdown.Item href="#">Employee</Dropdown.Item>
+      <Dropdown.Item href="#">Teacher</Dropdown.Item>
+      <Dropdown.Item href="#">Student</Dropdown.Item>
+    </DropdownButton>
+  </InputGroup>
+      <Row className="mt-2">
+      <Form.File
+      id="custom-file-translate-scss"
+      label="Custom file input"
+      lang="en"
+      custom
+    />
+</Row>
+<Row className="mt-2">
+      <Button variant="primary">Submit</Button>{' '}</Row>
+      </Form.Group>
+</Row>
+      </Container-Fluid> 
+      
        
-      </div>
-     <div className="form-group row">
-    <label  className="  col-md-4 password ">Password</label>
-      <input type="text" className="  col-md-4 form-control"  value={password} onChange={handelpasswordChange}/>
-    
-  </div>
-  <div className="form-group row">
-    <label className=" col-md-4 Email ">Email</label>
-      <input type="text" className="  col-md-4 form-control" value={email} onChange={handelEmailChange}/>
-  </div>
-                                      <div className="form-group row">
-                                        <label className="col-md-4 ">Role</label>
-                                      <select  className=" col-md-4" onChange = {handelSelect}>
-                                      <option value="---">---</option>
-                                        <option value="Admin">Admin</option>
-                                        <option value="School">School</option>
-                                        <option value="Reception">Receptionist</option>
-                                        <option value="Teacher">Teacher</option>
-                                        <option value="Student">Student</option>
-                                      </select>
-                                      </div>
-  <div className=" form-group row">
-    <label className=" ml-5 col-md-4 select">Select image:</label>
-    <input type="file" id="img" name="img" accept="image/*" onChange={handelimageChange} /></div>
-    <div className=" control">
-    <input type="submit" className=" col-md-8 form-control"  name="submit"  onClick={addSchool}/>
-    </div>
-</div>
-</>
-        
     );
 }
 export default AddSchool;
