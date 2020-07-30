@@ -5,6 +5,7 @@ import config from './../../config';
      const [active, setactive] = React.useState((props.status === 'true'));
      const [status, setstatus] = React.useState(null);
      const [error, seterror] = React.useState(null);
+     
      const changeStatus =()=>{
          fetch(config.baseurl+'auth/update/account',{
             method:'post',
@@ -17,7 +18,6 @@ import config from './../../config';
              setstatus(res.status);
              return res.json();
          }).then(data=>{
-             console.log(data);
             if(status === 200){
                 setactive(!active);
             }

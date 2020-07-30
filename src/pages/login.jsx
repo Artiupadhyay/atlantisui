@@ -54,7 +54,7 @@ function Login(props) {
             }
             else{
                 setMessage(null);
-                seterror(data.message || data.email[0]);
+                seterror(data.message || data.email[0] || "Something went wrong! Try Again");
             }
         })
         .catch(err=>console.log(err));
@@ -81,7 +81,7 @@ function Login(props) {
                     setpath( '/admin/dashboard/');
                 }
                 if(localStorage.getItem('role') === 'School'){
-                    setpath('/school/schooldash/');
+                    setpath('/school/dashboard');
                 }
                 if(localStorage.getItem('role') === 'Teacher'){
                     setpath('/teacher/teacherdash/');
@@ -105,10 +105,10 @@ function Login(props) {
 
     return(<>
             {(redirect || path)? <Redirect to ={path} />:null}
-           <div className="p-3 image row d-flex justify-content-center align align-items-center ">
+           <div className="p-3 image row d-flex justify-content-center align align-items-center text-white ">
                <div className="col-md-6">
-                <h1 className=" content font-weight-bold mb-3">Welcome To Atlantis </h1>
-                   <h2 className="content">Learning is fun!!</h2>
+                <h1 className=" content font-weight-bold mb-3 text-white">Welcome To Atlantis </h1>
+                   <h2 className="content text-white">Learning is fun!!</h2>
                </div>
                <div className="col-md-3">
             <div className="form">
@@ -121,8 +121,6 @@ function Login(props) {
             </div>
             <div className=" mt-2 md-form md-outline">
                 Password:
-
-
                 <input type="text" className=" mt-2 form-control" value={password} placeholder="Enter password here" onChange={handelPasswordChange}/>
             </div>
             <div className="md-form md-outline">
