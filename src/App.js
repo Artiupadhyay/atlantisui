@@ -17,6 +17,8 @@ import ViewClases from './pages/school/viewclasses';
 import Profile from './pages/school/profile';
 import AddSubject from './pages/school/addsubject';
 import ViewSubjects from './pages/school/viewsubjects';
+import AddVideo  from './pages/school/addvideo';
+import ViewVideos from './pages/school/viewvideos';
 
 import {
     BrowserRouter as Router,
@@ -43,7 +45,8 @@ function App() {
            <Route path='/school/profile' exact component ={Profile} />
            <Route path='/school/add/subject' exact component ={AddSubject} />
            <Route path='/school/view/subjects' exact component ={ViewSubjects} />
-
+           <Route path='/school/add/tutorial' exact component ={AddVideo} />
+           <Route path='/school/view/tutorial' exact component ={ViewVideos} />
            {/* School Route End */}
         </Router>
     );
