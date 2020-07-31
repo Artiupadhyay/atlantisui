@@ -75,7 +75,7 @@ addStudent= ()=>{
   formData.append('mobileno1',this.state.mobileNo1);
   formData.append('mobileno2',this.state.mobileNo2);
   formData.append('addmissiondate',this.state.admissionDate);
-  formData.append('dob',new Date(this.state.dob).toJSON());
+  formData.append('dob',this.state.dob);
   formData.append('srno',this.state.srno);
   formData.append('promotedclassid', this.state.class);
 

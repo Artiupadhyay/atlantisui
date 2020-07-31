@@ -35,15 +35,9 @@ class ViewEmployee extends React.Component{
                 <SchoolNav />
                 {this.state.employee?
                 <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5">
-                    <EmployeeCard />
-                    <EmployeeCard />
-                    <EmployeeCard />
-                    <EmployeeCard />
-                    <EmployeeCard />
-                    <EmployeeCard />
-                    <EmployeeCard />
-                    <EmployeeCard />
-                    <EmployeeCard />
+                     {this.state.employee.map((employeeinfo, index)=>
+                        <EmployeeCard employeeinfo ={employeeinfo}/>
+                       )} 
                 </div>
                 :<div>Employee not found</div>}
                 </Container-Fluid>
