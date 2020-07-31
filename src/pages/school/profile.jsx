@@ -3,7 +3,7 @@ import {Redirect} from 'react-router-dom';
 import SchoolNav from './components/schoolnav';
 import config from  './../config';
     
-
+let status = ''
 class Profile extends React.Component {
   
   constructor() {
@@ -16,7 +16,11 @@ class Profile extends React.Component {
         address3:'',
         city:'',
         state:'',
-        zip:''
+        zip:'',
+        redirect:false,
+        error:false,
+        success:false,
+        message:''
     };
   }
 
@@ -33,6 +37,42 @@ class Profile extends React.Component {
       }
     })
   }
+
+  updateProfile =()=>{
+    const formData = new FormData();
+    formData.append('name', this.state.name)
+    formData.append('email', this.state.email)
+    formData.append('address1', this.state.address1)
+    formData.append('address2', this.state.address2)
+    formData.append('address3', this.state.address3)
+    formData.append('city', this.state.city)
+    formData.append('state', this.state.state)
+    formData.append('zip', this.state.zip)
+
+    fetch(config.baseurl+'auth/profile',{
+      method:'put',
+      headers:{
+        'auth':localStorage.getItem('token')
+      },
+      body: formData
+    })
+    .then(res=>{
+      status = res.status;
+      return res.json();
+    })
+    .then(data=>{
+      if(status === 200 || status === 201){
+        localStorage.setItem('name',this.state.name);
+        this.setState({error:false,success:true ,message : "Profile Updated"});
+        
+      }
+      else{
+        this.setState({error:true,success:false, message:JSON.stringify(data)});
+      }
+    }).catch(err=>{
+      this.setState({error:true,success:false, message:JSON.stringify(err)});
+    })
+  }
     
 render(){
       if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
@@ -41,50 +81,50 @@ render(){
         localStorage.removeItem('role');
         this.setState({redrect:true});
     }
-    console.log(this.state);
     return(
       <>
       {this.state.redirect?<Redirect to = '/' />:null}
             
       <Container-Fluid>
       <SchoolNav/>
+      {this.state.error?<div className="alert alert-danger" role="alert">{this.state.message}</div> :(this.state.success ? <div className="alert alert-primary" role="alert">{this.state.message}</div>:null)}
       <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5">
           <div className="border-primary d-flex flex-column mt-5">
               <div className="row mt-4 ">
                 <span className="col-5">School Name</span>
-                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.name}/>
+                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.name} onChange={(event)=>this.setState({name:event.target.value})}/>
               </div>
               <div className="row mt-4">
                 <span className="col-5">Email</span>
-                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.email}/>
+                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.email} onChange={(event)=>this.setState({email:event.target.value})}/>
               </div>
               <div className="row mt-4 ">
                 <span className="col-5">Address Line 1</span>
-                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.address1}/>
+                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.address1} onChange={(event)=>this.setState({address1:event.target.value})}/>
               </div>
               <div className="row mt-4 ">
                 <span className="col-5">Address Line 2</span>
-                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.address2}/>
+                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.address2} onChange={(event)=>this.setState({address2:event.target.value})}/>
               </div>
               <div className="row mt-4 ">
                 <span className="col-5">Address Line 3</span>
-                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.address3}/>
+                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.address3} onChange={(event)=>this.setState({address3:event.target.value})}/>
               </div>
               <div className="row mt-4 ">
                 <span className="col-5">City</span>
-                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.city}/>
+                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.city} onChange={(event)=>this.setState({city:event.target.value})}/>
               </div>
               <div className="row mt-4 ">
                 <span className="col-5">State</span>
-                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.state}/>
+                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.state} onChange={(event)=>this.setState({state:event.target.value})}/>
               </div>
               <div className="row mt-4 ">
                 <span className="col-5">Pin Code</span>
-                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.zip}/>
+                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.zip} onChange={(event)=>this.setState({zip:event.target.value})}/>
               </div>
               <div className="row mt-4">
-                <button className="sm-ml-5 col-5 mr-2 form-control btn btn-primary" >Update Profile</button>
-                <button className="sm-ml-2 col-5 form-control btn btn-danger">Cancel</button>
+                <button className="sm-ml-5 col-5 mr-2 form-control btn btn-primary" onClick={ this.updateProfile}>Update Profile</button>
+                <button className="sm-ml-2 col-5 form-control btn btn-danger" onClick={()=>window.location.reload(true)}>Cancel</button>
               </div>
           </div>
         </div>
