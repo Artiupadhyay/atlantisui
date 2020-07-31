@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom'
 import SchoolNav from './components/schoolnav';
 import StudentCard from './components/studentcard';
 import configs from './../config';
@@ -10,7 +11,8 @@ class ViewStudents extends React.Component{
         this.state = {
             classes : null,
             selectedClass : null,
-            students : null
+            students : null,
+            redirect :false,
         };
     }
 
@@ -57,7 +59,15 @@ class ViewStudents extends React.Component{
     }
 
     render(){
+        if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
+            localStorage.removeItem('token');
+            localStorage.removeItem('image');
+            localStorage.removeItem('role');
+            this.setState({redrect:true});
+          }
             return(
+                <>
+                {this.state.redirect?<Redirect to = '/' />:null}
                 <Container-Fluid>
                 <SchoolNav />
                 {this.state.classes ? 
@@ -84,7 +94,7 @@ class ViewStudents extends React.Component{
                 </>
                 :<div>Kindly add a class then you can view students</div>}
                 </Container-Fluid>
-            
+            </>
             );
         }
 }

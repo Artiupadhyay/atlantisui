@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import {Form,Row,Col,Button} from 'react-bootstrap';
 import SchoolNav from './components/schoolnav';
 import config from './../config';
@@ -6,6 +7,8 @@ import config from './../config';
 function AddClass(props){
   const [className, setClassName] = React.useState('');
   const [section, setSection ] = React.useState('');
+  const [redirect, setRedirect] = React.useState(false);
+
   
   const [message, setMessage] = React.useState(null);
 
@@ -52,7 +55,16 @@ function AddClass(props){
      
     })
   }
+
+  if(localStorage.getItem('role')!=='Admin' && !redirect){
+    localStorage.removeItem('token');
+    localStorage.removeItem('image');
+    localStorage.removeItem('role');
+    setRedirect(true);
+  }
     return(
+      <>
+      {redirect?<Redirect to = '/' />:null}
       <Container-Fluid>
         <SchoolNav/>
         <Row noGutters={true} className="justify-content-md-center">
@@ -72,7 +84,7 @@ function AddClass(props){
           </Form.Group>
         </Row>
         </Container-Fluid> 
-        
+        </>
     );
   }
 export default AddClass;

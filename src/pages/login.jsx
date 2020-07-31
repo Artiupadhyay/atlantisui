@@ -33,12 +33,13 @@ function Login(props) {
                 localStorage.setItem('role', data.role);
                 localStorage.setItem('token', data.accessToken);
                 localStorage.setItem('image',data.image);
+                localStorage.setItem('name', data.name);
                 // setuserInfo({...data});
                 if(data.role === 'Admin'){
                     props.history.push('/admin/dashboard/');
                 }
                 if(data.role === 'School'){
-                    props.history.push('/school/schooldash/');
+                    props.history.push('/school/dashboard');
                 }
                 if(data.role === 'Teacher'){
                     props.history.push('/teacher/schooldash/');

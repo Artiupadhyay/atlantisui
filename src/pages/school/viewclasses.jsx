@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import configs from './../config';
 import SchoolNav from './components/schoolnav';
 import ClassCard from './components/classcard';
@@ -8,7 +9,8 @@ class ViewClasses extends React.Component{
     constructor() {
         super();
         this.state = {
-            classes : null
+            classes : null,
+            redirect: false
         };
     }
     
@@ -31,7 +33,15 @@ class ViewClasses extends React.Component{
         })
     }
     render(){
-            return(
+
+        if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
+            localStorage.removeItem('token');
+            localStorage.removeItem('image');
+            localStorage.removeItem('role');
+            this.setState({redrect:true});
+          }
+            return(<>
+            {this.state.redirect?<Redirect to = '/' />:null}
                 <Container-Fluid>
                 <SchoolNav />
                 {this.state.classes ?
@@ -41,7 +51,7 @@ class ViewClasses extends React.Component{
                 }
                 
                 </Container-Fluid>
-            
+                </>
             );
         }
 }

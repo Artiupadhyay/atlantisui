@@ -1,9 +1,11 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import SchoolNav from './components/schoolnav';
 import configs  from './../config';
 import config from './../config';
 import { Form } from 'react-bootstrap';
-let status = ''
+var status1 = ''
+var status2 = ''
     
 
 class AddStudent extends React.Component {
@@ -30,10 +32,15 @@ class AddStudent extends React.Component {
         srno: '',
         class:'',
         admissionDate:'',
+        redirect:false,
+        error:false,
+        success:false,
         message:''
     };
     
 }
+
+
 
 componentDidMount = ()=>{
   fetch(configs.baseurl+'school/class',{
@@ -42,11 +49,11 @@ componentDidMount = ()=>{
           'auth':localStorage.getItem('token')
       }
   }).then(res=>{
-      status = res.status
+      status1 = res.status
       return res.json()
   })
   .then(data=>{
-      if(status === 200 || status === 201){
+      if(status1 === 200 || status1 === 201){
           data.sort((a, b) => a.classname - b.classname);
           this.setState({classes:data});
       }
@@ -87,26 +94,37 @@ addStudent= ()=>{
     body: formData
   })
   .then(res=>{
-    status =  res.status;
+    status2 =  res.status;
     return res.json();
   })
   .then(data =>{
-    if(status === 200 || status || 201){
-      this.setState({message : "Successfully created"});
+    if(status2 === 200 || status2 === 201){
+      this.setState({error:false,success:true ,message : "Successfully created"});
     }
     else{
-      console.log(data);
+      this.setState({error:true,success:false, message:JSON.stringify(data)});
     }
   }).catch(err=>{
-    console.log(err);
+    this.setState({error:true,success:false, message:JSON.stringify(err)});
   })
 }
+
 render(){
-    return(
+  if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
+    localStorage.removeItem('token');
+    localStorage.removeItem('image');
+    localStorage.removeItem('role');
+    this.setState({redrect:true});
+  }
+
+
+    return(<>
       <Container-Fluid>
+        {this.state.redirect ? <Redirect to = '/' />:null}
         <SchoolNav/>
         {this.state.classes ? 
         <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5">
+          {this.state.error?<div className="alert alert-danger" role="alert">{this.state.message}</div> :(this.state.success ? <div className="alert alert-primary" role="alert">{this.state.message}</div>:null)}
           <div className="border-primary d-flex flex-column mt-5">
               <div className="row mt-4 ">
                 <span className="col-5">Student Name</span>
@@ -191,7 +209,8 @@ render(){
               </div>
           </div>
         </div>:<>Kindly Add some classes</>}
-      </Container-Fluid>  
+      </Container-Fluid>
+      </>
     );
 }
 }

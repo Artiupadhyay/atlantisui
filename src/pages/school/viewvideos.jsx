@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect}  from 'react-router-dom';
 import SchoolNav from './components/schoolnav';
 import configs from '../config';
 import config from '../config';
@@ -12,6 +13,7 @@ class ViewVideos extends React.Component{
             classes : null,
             subjects:null,
             videos:null,
+            redirect:false
         };
     }
 
@@ -83,7 +85,18 @@ class ViewVideos extends React.Component{
 
 
     render(){
+
+        if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
+            localStorage.removeItem('token');
+            localStorage.removeItem('image');
+            localStorage.removeItem('role');
+            this.setState({redrect:true});
+        }
+
         return(
+            <>
+            {this.state.redirect?<Redirect to = '/' />:null}
+            
             <Container-Fluid>
               <SchoolNav/>
               {this.state.classes ? 
@@ -119,7 +132,7 @@ class ViewVideos extends React.Component{
                    
                 :"Select other subject"}
             </Container-Fluid> 
-              
+              </>
           );
     };
     

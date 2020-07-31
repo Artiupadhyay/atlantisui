@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import SchoolNav from './components/schoolnav';
 import EmployeeCard from './components/employeecard';
 import configs from './../config';
@@ -8,7 +9,8 @@ class ViewEmployee extends React.Component{
     constructor() {
         super();
         this.state = {
-            employee : null
+            employee : null,
+            redirect :false
         };
     }
 
@@ -30,7 +32,15 @@ class ViewEmployee extends React.Component{
     }
 
     render(){
+
+        if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
+            localStorage.removeItem('token');
+            localStorage.removeItem('image');
+            localStorage.removeItem('role');
+            this.setState({redrect:true});
+          }
             return(
+                <>{this.state.redirect?<Redirect to = '/' />:null}
                 <Container-Fluid>
                 <SchoolNav />
                 {this.state.employee?
@@ -41,7 +51,7 @@ class ViewEmployee extends React.Component{
                 </div>
                 :<div>Employee not found</div>}
                 </Container-Fluid>
-            
+            </>
             );
         }
 }

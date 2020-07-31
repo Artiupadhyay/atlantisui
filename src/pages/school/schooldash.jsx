@@ -1,10 +1,17 @@
 import React from 'react';
-import {connect} from'react-redux';
+import {Redirect} from 'react-router-dom';
 import SchoolNav from './components/schoolnav';
 
 function SchoolDash(props) {
+    const [redirect, setRedirect] = React.useState(false);
+    if(localStorage.getItem('role')!=='School' && !redirect){
+        localStorage.removeItem('token');
+        localStorage.removeItem('image');
+        localStorage.removeItem('role');
+        setRedirect(true);
+      }
     
-    return(<>
+    return(<>{redirect?<Redirect to = '/' />:null}
             <SchoolNav/>
            <div className="row d-flex justify-content">
             </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import SchoolNav from './components/schoolnav';
 import configs from './../config';
+import {Redirect} from 'react-router-dom';
 let status = ''
 
 class AddSubject extends React.Component{
@@ -9,7 +10,8 @@ class AddSubject extends React.Component{
         this.state = {
             classes : null,
             subjectname:null,
-            classid:null
+            classid:null,
+            redirect: false
         };
     }
 
@@ -54,7 +56,17 @@ class AddSubject extends React.Component{
         })
     }
     render(){
+
+        if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
+            localStorage.removeItem('token');
+            localStorage.removeItem('image');
+            localStorage.removeItem('role');
+            this.setState({redrect:true});
+        }
+
         return(
+            <>
+            {this.state.redirect?<Redirect to = '/' />:null}
             <Container-Fluid>
               <SchoolNav/>
               {this.state.classes ? 
@@ -80,7 +92,7 @@ class AddSubject extends React.Component{
                 </div>
                 </div> :<>Kindly Add Some classes </>}
             </Container-Fluid> 
-              
+              </>
           );
     };
     

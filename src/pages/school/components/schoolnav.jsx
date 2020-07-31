@@ -15,8 +15,9 @@ function SchoolNav(props){
               <NavDropdown.Item href="/school/view/students">View Student</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Attendance" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/employee/attendance">View Employee Attendance</NavDropdown.Item>
-              <NavDropdown.Item href="/student/attendance">View Student Attendance</NavDropdown.Item>
+              <NavDropdown.Item href="/school/add/employee/attendance">Add Employees Attendance</NavDropdown.Item>
+              <NavDropdown.Item href="/school/view/employee/attendance">View Employee Attendance</NavDropdown.Item>
+              <NavDropdown.Item href="/school/view/student/attendance">View Student Attendance</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Employee" id="basic-nav-dropdown">
               <NavDropdown.Item href="/school/employee/registration">Add Employee</NavDropdown.Item>
