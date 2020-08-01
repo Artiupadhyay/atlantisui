@@ -19,6 +19,11 @@ import AddSubject from './pages/school/addsubject';
 import ViewSubjects from './pages/school/viewsubjects';
 import AddVideo  from './pages/school/addvideo';
 import ViewVideos from './pages/school/viewvideos';
+import AddEmployeeAttendance from './pages/school/addemployeeattendance';
+import ViewEmployeeAttendance from './pages/school/viewemployeeattendance';
+import ViewStudentAttendance from './pages/school/viewstudentattendance';
+import AddTimeTable from './pages/school/addtimetable';
+import ViewTimeTable from './pages/school/viewtimetable';
 
 import {
     BrowserRouter as Router,
@@ -47,8 +52,12 @@ function App() {
            <Route path='/school/view/subjects' exact component ={ViewSubjects} />
            <Route path='/school/add/tutorial' exact component ={AddVideo} />
            <Route path='/school/view/tutorial' exact component ={ViewVideos} />
-           <Route path='/school/add/employee/attendance' exact component ={ViewVideos} />
-           <Route path='/school/view/employee/attendance' exact component ={ViewVideos} />
+           <Route path='/school/add/employee/attendance' exact component ={AddEmployeeAttendance} />
+           <Route path='/school/view/employee/attendance' exact component ={ViewEmployeeAttendance} />
+           <Route path='/school/view/student/attendance' exact component={ViewStudentAttendance} />
+           <Route path='/school/add/timetable' exact component={AddTimeTable} />
+           <Route path='/school/view/timetable' exact component={ViewTimeTable} />
+
            {/* School Route End */}
         </Router>
     );

@@ -35,6 +35,10 @@ function SchoolNav(props){
               <NavDropdown.Item href="/school/add/tutorial">Add Video</NavDropdown.Item>
               <NavDropdown.Item href="/school/view/tutorial">View Videos</NavDropdown.Item>
             </NavDropdown>
+            <NavDropdown title="Time Table" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/school/add/timetable">Add Time Table</NavDropdown.Item>
+              <NavDropdown.Item href="/school/view/timetable">View Time Table</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           <Nav>
           <NavDropdown title={localStorage.getItem('name') || "User name"} id="basic-nav-dropdown">

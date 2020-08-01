@@ -56,7 +56,7 @@ function AddClass(props){
     })
   }
 
-  if(localStorage.getItem('role')!=='Admin' && !redirect){
+  if(localStorage.getItem('role')!=='School' && !redirect){
     localStorage.removeItem('token');
     localStorage.removeItem('image');
     localStorage.removeItem('role');
