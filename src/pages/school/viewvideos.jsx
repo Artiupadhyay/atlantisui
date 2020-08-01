@@ -73,7 +73,6 @@ class ViewVideos extends React.Component{
             return res.json();
         })
         .then(data=>{
-            console.log(data)
             if(status ===200 || status ===201){
                 this.setState({videos:data});
             }

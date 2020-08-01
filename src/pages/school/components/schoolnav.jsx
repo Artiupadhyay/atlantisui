@@ -4,7 +4,7 @@ import config from '../../config';
 
 function SchoolNav(props){
     return(
-      <Navbar className="shadow-lg navbar" expand="md" variant="dark">
+      <Navbar className="shadow-lg navbar" expand="lg" variant="dark">
         <Container>
         <Navbar.Brand href="/school/dashboard">Atlantis</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

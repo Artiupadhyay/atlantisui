@@ -81,12 +81,12 @@ class ViewStudents extends React.Component{
                             )}
                             
                         </select>
-                        <button className="ml-2 mt-5 btn btn-primary col-2" onClick={this.getStudents}>Show Students</button>
+                        <button className="ml-2 mt-5 btn btn-primary col-4" onClick={this.getStudents}>Show Students</button>
                     </div>
                     {this.state.students ?
                     <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5">
                        {this.state.students.map((studentinfo, index)=>
-                        <StudentCard studentinfo ={studentinfo}/>
+                        <StudentCard studentinfo ={studentinfo} key={index}/>
                        )} 
                     </div>
                     :<div>Students not found</div>}
