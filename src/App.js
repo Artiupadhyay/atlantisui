@@ -24,6 +24,18 @@ import ViewEmployeeAttendance from './pages/school/viewemployeeattendance';
 import ViewStudentAttendance from './pages/school/viewstudentattendance';
 import AddTimeTable from './pages/school/addtimetable';
 import ViewTimeTable from './pages/school/viewtimetable';
+import EmployeeDashBoard from './pages/employee/employeedashboard';
+import EmployeeAddStudents from './pages/employee/addstudents';
+import ViewStudent from './pages/employee/viewstudent';
+import AddEmployeeSubject from './pages/employee/addemployeesubjects';
+import ViewEmployeeSubject from './pages/employee/viewemployeesubject';
+import AddStudentAttendance from './pages/employee/addstudentsattendance';
+import ViewStudentAttendances from './pages/employee/viewstudentsattendances';
+import AddHomework from './pages/employee/addhomework';
+import ViewHomework from './pages/employee/viewhomework';
+import AddEmployeeVideo from './pages/employee/addemployeevideo';
+import ViewEmployeeVideo from './pages/employee/viewemployeevideo';
+
 
 import {
     BrowserRouter as Router,
@@ -57,8 +69,24 @@ function App() {
            <Route path='/school/view/student/attendance' exact component={ViewStudentAttendance} />
            <Route path='/school/add/timetable' exact component={AddTimeTable} />
            <Route path='/school/view/timetable' exact component={ViewTimeTable} />
+           {/* School Route end here */}
+           {/* Employee route start */}
+           <Route path='/employee/employeedashboard' exact component={EmployeeDashBoard} />
+           <Route path='/employee/add/students' exact component={EmployeeAddStudents} />
+           <Route path='/employee/view/student' exact component={ViewStudent} />
+           <Route path='/employee/add/students/attendance' exact component={AddStudentAttendance} />
+           <Route path='/employee/view/students/attendances' exact component={ViewStudentAttendances} />
+           <Route path='/employee/add/subject' exact component={AddEmployeeSubject} />
+           <Route path='/employee/view/employee/subject' exact component={ViewEmployeeSubject} />
+           <Route path='/employee/add/employee/video' exact component={AddEmployeeVideo} />
+           <Route path='/employee/view/employee/video' exact component={ViewEmployeeVideo} />
+           <Route path='/employee/add/homework' exact component={AddHomework} />
+           <Route path='/employee/view/homework' exact component={ViewHomework} />
+           
+           
 
-           {/* School Route End */}
+
+           {/* Employee Route End */}
         </Router>
     );
 }
