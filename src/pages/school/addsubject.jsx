@@ -3,6 +3,7 @@ import SchoolNav from './components/schoolnav';
 import configs from './../config';
 import {Redirect} from 'react-router-dom';
 let status = ''
+let status2 = ''
 
 class AddSubject extends React.Component{
     constructor() {
@@ -43,17 +44,19 @@ class AddSubject extends React.Component{
             body: JSON.stringify({subjectname:this.state.subjectname,classid:this.state.classid})
         })
         .then(res =>{
-            status =  res.status;
+            status2 =  res.status;
             return res.json();
         })
         .then(data=>{
-            if(status ===200 || status ===201){
-                console.log('created')
-            }
-            else{
-                console.log('error')
-            }
-        })
+            if(status2 === 200 || status2 === 201){
+                this.setState({error:false,success:true ,message : "Successfully created"});
+              }
+              else{
+                this.setState({error:true,success:false, message:JSON.stringify(data)});
+              }
+            }).catch(err=>{
+              this.setState({error:true,success:false, message:JSON.stringify(err)});
+            })
     }
     render(){
 
@@ -71,6 +74,7 @@ class AddSubject extends React.Component{
               <SchoolNav/>
               {this.state.classes ? 
               <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5">
+                 {this.state.error?<div className="alert alert-danger" role="alert">{this.state.message}</div> :(this.state.success ? <div className="alert alert-primary" role="alert">{this.state.message}</div>:null)}
                 <div className="border-primary d-flex flex-column mt-5">
                     <div className="row mt-4 ">
                         <span className="col-5">Subject Name</span>
