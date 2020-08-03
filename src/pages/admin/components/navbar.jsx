@@ -22,7 +22,7 @@ function Navbar(props) {
     <div class="dropdown-content">
       <a href="#">Name</a>
       <a href="#">Role</a>
-      <a href="./logout">Logout</a>
+      <a href="/logout">Logout</a>
     </div>
    </div> 
   </div>

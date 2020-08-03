@@ -1,0 +1,21 @@
+Employee Dashboard :- 
+		Add Student,
+		View Student, 
+		Add Student Attendance,
+		View Student Attendance,
+		
+		Add Subject,
+		View Subject,
+		
+		Add Video,
+		View Video
+        
+        Add Homework(Sbuject, text ,image, Submit Cancel)
+        View Home work
+
+		Check User Name,
+		Attendance,
+        profile
+		Logout
+
+employee/add/student
