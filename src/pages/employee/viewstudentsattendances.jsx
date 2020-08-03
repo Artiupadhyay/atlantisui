@@ -39,7 +39,7 @@ componentDidMount = ()=>{
 
 
 getAttendance = ()=>{
-  fetch(configs.baseurl+'attendance/employe',{
+  fetch(configs.baseurl+'attendance/student',{
       method:'put',
       headers:{
           'auth':localStorage.getItem('token'),
@@ -78,12 +78,12 @@ getDateList=()=>{
 
 
 render(){
-            if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
-                localStorage.removeItem('token');
-                localStorage.removeItem('image');
-                localStorage.removeItem('role');
-                this.setState({redrect:true});
-            }
+            // if((localStorage.getItem('role')!=='Teacher' || localStorage.getItem('role')!=='' ||) && ! this.state.redirect){
+            //     localStorage.removeItem('token');
+            //     localStorage.removeItem('image');
+            //     localStorage.removeItem('role');
+            //     this.setState({redrect:true});
+            // }
 
         console.log(this.state)
         
@@ -95,17 +95,7 @@ render(){
             <div className="d-flex row mt-4 align-content-center">
                 <span className="sm-ml-5 mr-2" >Show Student Attendance</span>
             </div>
-            <div className="row mt-4">
-                <span className="col-5">Class</span>
-                  <select className="sm-ml-5 col-7 form-control"  onChange={(event)=>{this.setState({class:event.target.value})}}>
-                    <option value="---">---</option>
-                    {this.state.classes ? this.state.classes.map((classinfo,index)=>
-                        <option value={classinfo.id} key={index}>{classinfo.classname +" "+ classinfo.section} </option>
-                    ): null }
-                  </select>
-              </div>
-            <div className="row mt-4 ">
-                
+            <div className="row mt-4 ">   
                 <input type="date"  className="mr-2 col-4" onChange={(event)=>this.setState({fromDate:event.target.value})}/>
                 <input type="date" className="mr-2 col-4" onChange={(event)=>this.setState({toDate:event.target.value})}/>
                 <button className="sm-ml-5 col-3 mr-2 form-control btn btn-primary" onClick={this.getAttendance}>Show</button>
@@ -117,7 +107,7 @@ render(){
                 <table class="table table-sm table-bordered">
                 <thead>
                     <tr>
-                    <th scope="col">Employee Name</th>
+                    <th scope="col">Student Name/Date</th>
                     {
                     this.getDateList().map((date,index)=>(<th scope="col">{date}</th>))
                     }

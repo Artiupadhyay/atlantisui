@@ -14,15 +14,15 @@ class AddStudentAttendanceCard extends React.Component {
     
 }
 
-setAttendance=(employeeid, attendancestatus)=>{
-    console.log(employeeid+" "+attendancestatus +" "+new Date().toLocaleDateString());
-    fetch(config.baseurl+'attendance/employe',{
+setAttendance=(studentid, attendancestatus)=>{
+    console.log(studentid+" "+attendancestatus +" "+new Date().toLocaleDateString());
+    fetch(config.baseurl+'attendance/student',{
         method:'post',
         headers:{
             'Content-Type':'application/json',
             'auth':localStorage.getItem('token')
         },
-        body:JSON.stringify({id:employeeid,date:new Date().toISOString().split('T')[0], status:attendancestatus})
+        body:JSON.stringify({id:studentid,date:new Date().toISOString().split('T')[0], status:attendancestatus})
     }).then(res=>{
         status =res.status;
         return res.json();
@@ -36,8 +36,8 @@ setAttendance=(employeeid, attendancestatus)=>{
 render(){
     return(
               <div className="row mt-4 ">
-                <span className="col-5">{this.props.employeeinfo.name}</span>
-                <select className="sm-ml-5 col-7 form-control" onChange={(evenet)=>this.setAttendance(this.props.employeeinfo.id,evenet.target.value)} >
+                <span className="col-5">{this.props.studentinfo.name}</span>
+                <select className="sm-ml-5 col-7 form-control" onChange={(evenet)=>this.setAttendance(this.props.studentinfo.id,evenet.target.value)} >
                     <option value="-">-</option>
                     <option value="P">P</option>
                     <option value="A">A</option>

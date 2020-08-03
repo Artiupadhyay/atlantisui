@@ -10,10 +10,11 @@ class ViewSubjectCard extends React.Component{
         };
     }
     componentDidMount=()=>{
-        this.setState({classinfo:this.props});
+        this.setState({subjects:this.props});
     }
 
     render(){
+        console.log(this.state);
             return(<>
                 {this.state.classinfo ?
                 <div className="card text-white bg-info mb-3 mr-auto ml-3 mt-4 " style={{maxWidth: "18rem"}}>

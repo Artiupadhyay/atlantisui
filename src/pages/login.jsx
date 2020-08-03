@@ -42,13 +42,13 @@ function Login(props) {
                     props.history.push('/school/dashboard');
                 }
                 if(data.role === 'Teacher'){
-                    props.history.push('/teacher/schooldash/');
+                    props.history.push('/employee/employeedashboard');
                 }
                 if(data.role === 'Reception'){
-                    props.history.push('/reception/schooldash/');
+                    props.history.push('/employee/employeedashboard');
                 }
                 if(data.role === 'Accountant'){
-                    props.history.push('/accountant /schooldash/');
+                    props.history.push('/employee/employeedashboard');
                 }
                 seterror(null);
                 setMessage("Login Successfull")
@@ -85,13 +85,13 @@ function Login(props) {
                     setpath('/school/dashboard');
                 }
                 if(localStorage.getItem('role') === 'Teacher'){
-                    setpath('/teacher/teacherdash/');
+                    setpath('/employee/employeedashboard');
                 }
                 if(localStorage.getItem('role') === 'Reception'){
-                    setpath('/reception/receptiondash/');
+                    setpath('/employee/employeedashboard');
                 }
                 if(localStorage.getItem('role') === 'Accountant'){
-                    setpath('/accountant /accountant/');
+                    setpath('/employee/employeedashboard');
                 }
                 setRedirect(true);
             }
