@@ -1,6 +1,8 @@
 
 import React from 'react';
 import config from './../../config';
+import StudentModel from './studentmodel';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 function StudentCard(props) {
 
@@ -50,6 +52,7 @@ function StudentCard(props) {
             <button onClick={changeStatus} className={props.studentinfo.active?" btn btn-danger":"btn btn-success"}>{props.studentinfo.active ? "Deactivate account": "Activate account"}</button>
             <button onClick={()=>handleDelete(props.studentinfo.id)} className="btn btn-danger mt-3">Delete Student</button>
             </div>
+            <StudentModel studentid = {props.studentinfo.id}/>
         </div>
     );
 }
