@@ -41,6 +41,8 @@ if(localStorage.getItem('role')!=='Admin' && !redirect){
         {redirect?<Redirect to = '/' />:null}
         <Navbar />
         <div className="d-flex col-4">
+        {error?<div className="alert alert-danger" role="alert">{error}</div> :null }
+               
             {
                 schools ?( schools.map((school,index)=><Card 
                 name= {school.name} image = {school.image}

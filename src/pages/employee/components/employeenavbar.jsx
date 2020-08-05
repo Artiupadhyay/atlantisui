@@ -34,8 +34,8 @@ class EmployeeNavbar extends React.Component{
                   <NavDropdown.Item href="/employee/view/tutorial">View Videos</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Homework" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/employee/add/timetable">Add Homework</NavDropdown.Item>
-                  <NavDropdown.Item href="/employee/view/timetable">View Homework</NavDropdown.Item>
+                  <NavDropdown.Item href="/employee/add/homework">Add Homework</NavDropdown.Item>
+                  <NavDropdown.Item href="/employee/view/homework">View Homework</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
               <Nav>

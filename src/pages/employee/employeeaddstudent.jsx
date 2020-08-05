@@ -109,12 +109,13 @@ addStudent= ()=>{
 }
 
 render(){
-  // if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
-  //   localStorage.removeItem('token');
-  //   localStorage.removeItem('image');
-  //   localStorage.removeItem('role');
-  //   this.setState({redrect:true});
-  // }
+ 
+  if((localStorage.getItem('role')!=='Teacher' || localStorage.getItem('role')!=='Reception' || localStorage.getItem('role')!=='Accountant')  && ! this.state.redirect){
+    localStorage.removeItem('token');
+    localStorage.removeItem('image');
+    localStorage.removeItem('role');
+    this.setState({redrect:true});
+ }
 
 
     return(<>
