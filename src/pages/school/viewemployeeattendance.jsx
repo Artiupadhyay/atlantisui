@@ -54,7 +54,6 @@ getDateList=()=>{
     listDate.push(strDate);
     dateMove.setDate(dateMove.getDate()+1);
     };
-    console.log(listDate);
     return listDate;
 }
 
@@ -64,11 +63,10 @@ render(){
                 localStorage.removeItem('token');
                 localStorage.removeItem('image');
                 localStorage.removeItem('role');
-                this.setState({redrect:true});
+                this.setState({redirect:true});
             }
 
-        console.log(this.state)
-        
+       
     return(<>
       <Container-Fluid>
         {this.state.redirect ? <Redirect to = '/' />:null}

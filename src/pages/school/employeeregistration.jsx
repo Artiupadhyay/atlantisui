@@ -107,7 +107,7 @@ render(){
     localStorage.removeItem('token');
     localStorage.removeItem('image');
     localStorage.removeItem('role');
-    this.setState({redrect:true});
+    this.setState({redirect:true});
   }
     return(
       <>{this.state.redirect?<Redirect to = '/' />:null}

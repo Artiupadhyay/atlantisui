@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect}  from 'react-router-dom';
 import SchoolNav from './components/schoolnav';
 import configs from './../config';
 import ViewSubjectCard from './components/viewsubjectcard';
@@ -36,8 +37,16 @@ class ViewSubjects extends React.Component{
 
     
     render(){
+        if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
+            localStorage.removeItem('token');
+            localStorage.removeItem('image');
+            localStorage.removeItem('role');
+            this.setState({redirect:true});
+        }
             return(
                 <Container-Fluid>
+                    {this.state.redirect?<Redirect to = '/' />:null}
+            
                     <SchoolNav />
                     <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5">
                         {this.state.classes?

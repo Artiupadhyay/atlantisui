@@ -36,6 +36,7 @@ import AddHomework from './pages/employee/addhomework';
 import ViewHomework from './pages/employee/viewhomework';
 import AddEmployeeVideo from './pages/employee/addemployeevideo';
 import ViewEmployeeVideo from './pages/employee/viewemployeevideo';
+import EmployeeProfile from './pages/employee/profile';
 
 
 import {
@@ -83,6 +84,7 @@ function App() {
            <Route path='/employee/view/tutorial' exact component={ViewEmployeeVideo} />
            <Route path='/employee/add/homework' exact component={AddHomework} />
            <Route path='/employee/view/homework' exact component={ViewHomework} />
+           <Route path='/employee/profile' exact component={EmployeeProfile} />
            
            
 

@@ -38,16 +38,15 @@ class ViewEmployeeSubject extends React.Component{
     
     render(){
 
-        if((localStorage.getItem('role')!=='Teacher' || localStorage.getItem('role')!=='Reception' || localStorage.getItem('role')!=='Accountant')  && ! this.state.redirect){
+        if(!['Teacher','Reception','Accountant'].includes(localStorage.getItem('role'))  && ! this.state.redirect){
             localStorage.removeItem('token');
             localStorage.removeItem('image');
             localStorage.removeItem('role');
-            this.setState({redrect:true});
+            this.setState({redirect:true});
          }
             return(
                 <Container-Fluid>
                      {this.state.redirect ? <Redirect to = '/' />:null}
-            
                      <EmployeeNavbar />
                     <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5">
                       <div className="mt-2">

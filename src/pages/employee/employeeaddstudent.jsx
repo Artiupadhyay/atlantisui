@@ -42,24 +42,6 @@ class EmployeAddStudents extends React.Component {
 
 
 
-// componentDidMount = ()=>{
-//   fetch(configs.baseurl+'school/class',{
-//       method:'get',
-//       headers:{
-//           'auth':localStorage.getItem('token')
-//       }
-//   }).then(res=>{
-//       status1 = res.status
-//       return res.json()
-//   })
-//   .then(data=>{
-//       if(status1 === 200 || status1 === 201){
-//           data.sort((a, b) => a.classname - b.classname);
-//           this.setState({classes:data});
-//       }
-//   })
-// }
-
 addStudent= ()=>{
   const formData = new FormData();
 
@@ -110,13 +92,12 @@ addStudent= ()=>{
 
 render(){
  
-  if((localStorage.getItem('role')!=='Teacher' || localStorage.getItem('role')!=='Reception' || localStorage.getItem('role')!=='Accountant')  && ! this.state.redirect){
+  if(!['Teacher','Reception','Accountant'].includes(localStorage.getItem('role'))  && ! this.state.redirect){
     localStorage.removeItem('token');
     localStorage.removeItem('image');
     localStorage.removeItem('role');
-    this.setState({redrect:true});
+    this.setState({redirect:true});
  }
-
 
     return(<>
       <Container-Fluid>

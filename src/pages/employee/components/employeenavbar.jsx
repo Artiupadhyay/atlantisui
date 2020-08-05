@@ -40,7 +40,7 @@ class EmployeeNavbar extends React.Component{
               </Nav>
               <Nav>
               <NavDropdown title={localStorage.getItem('name') || "User name"} id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/school/profile">
+                  <NavDropdown.Item href="/employee/profile">
                     <Image src={localStorage.getItem('image')? "data:image/jpeg;base64,"+ localStorage.getItem('image') : require('./../../../user.png')} height={50} className="rounded"/>
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#">Check Attendance</NavDropdown.Item>

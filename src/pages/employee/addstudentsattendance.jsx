@@ -39,11 +39,11 @@ componentDidMount = ()=>{
 
 render(){
  
-  if((localStorage.getItem('role')!=='Teacher' || localStorage.getItem('role')!=='Reception' || localStorage.getItem('role')!=='Accountant')  && ! this.state.redirect){
+  if(!['Teacher','Reception','Accountant'].includes(localStorage.getItem('role'))  && ! this.state.redirect){
     localStorage.removeItem('token');
     localStorage.removeItem('image');
     localStorage.removeItem('role');
-    this.setState({redrect:true});
+    this.setState({redirect:true});
  }
 
 
