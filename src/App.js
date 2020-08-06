@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import Login from './pages/login';
@@ -37,6 +36,12 @@ import ViewHomework from './pages/employee/viewhomework';
 import AddEmployeeVideo from './pages/employee/addemployeevideo';
 import ViewEmployeeVideo from './pages/employee/viewemployeevideo';
 import EmployeeProfile from './pages/employee/profile';
+
+import StudentDashboard from './pages/student/studentdashboard';
+import StudentAttendance from './pages/student/studentattendance';
+import ViewStudentHomework from './pages/student/viewstudenthomework';
+import ViewTutorial from './pages/student/viewtutorial';
+import StudentProfile from './pages/student/studentprofile';
 
 
 import {
@@ -85,11 +90,14 @@ function App() {
            <Route path='/employee/add/homework' exact component={AddHomework} />
            <Route path='/employee/view/homework' exact component={ViewHomework} />
            <Route path='/employee/profile' exact component={EmployeeProfile} />
-           
-           
-
-
            {/* Employee Route End */}
+           {/* Student Route Start */}
+           <Route path='/student/dashboard' exact component = {StudentDashboard}/>
+           <Route path='/student/view/homework' exact component = {ViewStudentHomework} />
+           <Route path='/student/view/tutorial' exact component = {ViewTutorial} />
+           <Route path='/student/view/attendance' exact component = {StudentAttendance} />
+           <Route path='/student/view/profile' exact component = {StudentProfile} />
+           {/* Student Route End */}
         </Router>
     );
 }

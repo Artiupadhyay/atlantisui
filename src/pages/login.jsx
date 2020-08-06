@@ -50,6 +50,9 @@ function Login(props) {
                 if(data.role === 'Accountant'){
                     props.history.push('/employee/employeedashboard');
                 }
+                if(data.role === 'Student'){
+                    props.history.push('/student/dashboard');
+                }
                 seterror(null);
                 setMessage("Login Successfull")
             }
@@ -93,12 +96,16 @@ function Login(props) {
                 if(localStorage.getItem('role') === 'Accountant'){
                     setpath('/employee/employeedashboard');
                 }
+                if(localStorage.getItem('role') === 'Student'){
+                    setpath('/student/dashboard')
+                }
                 setRedirect(true);
             }
             else {
                 localStorage.removeItem('token');
                 localStorage.removeItem('role');
                 localStorage.removeItem('image');
+                localStorage.removeItem('name')
             }
         })
 
