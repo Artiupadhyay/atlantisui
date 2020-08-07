@@ -4,8 +4,7 @@ import SchoolNav from './components/schoolnav';
 import configs  from './../config';
 
 var status1 = ''
-var status2 = ''
-    
+var listDate = [];    
 
 class ViewEmployeeAttendance extends React.Component {
   
@@ -43,7 +42,7 @@ getAttendance = ()=>{
 }
 
 getDateList=()=>{
-    var listDate = [];
+    listDate = [];
     var startDate =this.state.fromDate;
     var endDate = this.state.toDate;
     var dateMove = new Date(startDate);
@@ -84,22 +83,30 @@ render(){
         </div>
        {this.state.attendanceData? <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5">
             <div class="table-responsive">
-                <table class="table table-sm table-bordered">
+                <table class="table table-sm table-bordered mt-3">
                 <thead>
                     <tr>
                     <th scope="col">Employee Name</th>
                     {
                     this.getDateList().map((date,index)=>(<th scope="col">{date}</th>))
                     }
+                    <th>Present And Absent Count</th>
                     </tr>
                 </thead>
                 <tbody>
                    {this.state.attendanceData.map((employeinfo,index)=>
                         (<tr>
                         <td scope="col">{employeinfo.name}</td>
-                        {employeinfo.attendancedata.map((attendanceinfo,index)=>(
-                            <td scope="col">{attendanceinfo.status}</td>
+                        {listDate.map((date,index)=>(
+                            <td scope="col">{employeinfo.attendancedata.find(attendace=>attendace.attendancedate === date) ? employeinfo.attendancedata.find(attendance=>attendance.attendancedate === date).status  :"--"}</td>
                         ))}
+                        <td>P -{employeinfo.attendancedata.filter(function(attendace){
+                                    return attendace.status === 'P' || attendace.status === 'p';
+                                }).length} <br />
+                            A -{employeinfo.attendancedata.filter(function(attendace){
+                                    return attendace.status === 'A' || attendace.status === 'a';
+                                }).length}
+                        </td>
                         </tr>))}
                 </tbody>
                 </table>

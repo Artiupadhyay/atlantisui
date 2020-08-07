@@ -123,7 +123,7 @@ render(){
         {this.state.redirect ? <Redirect to = '/' />:null}
         <SchoolNav/>
         {this.state.classes ? 
-        <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5">
+        <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5 border border-primary">
           {this.state.error?<div className="alert alert-danger" role="alert">{this.state.message}</div> :(this.state.success ? <div className="alert alert-primary" role="alert">{this.state.message}</div>:null)}
           <div className="border-primary d-flex flex-column mt-5">
               <div className="row mt-4 ">

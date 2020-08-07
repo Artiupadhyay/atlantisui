@@ -4,8 +4,8 @@ import SchoolNav from './components/schoolnav';
 import configs  from './../config';
 
 var status1 = ''
-var status2 = ''
-    
+var listDate = [];
+        
 
 class ViewStudentAttendance extends React.Component {
   
@@ -39,13 +39,13 @@ componentDidMount = ()=>{
 
 
 getAttendance = ()=>{
-  fetch(configs.baseurl+'attendance/employe',{
-      method:'put',
+  fetch(configs.baseurl+'attendance/students',{
+      method:'post',
       headers:{
           'auth':localStorage.getItem('token'),
           'Content-Type':'application/json'
       },
-      body:JSON.stringify({fromDate:this.state.fromDate, toDate:this.state.toDate})
+      body:JSON.stringify({fromDate:this.state.fromDate, toDate:this.state.toDate, classid: this.state.classid})
   }).then(res=>{
       status1 = res.status
       return res.json()
@@ -61,7 +61,7 @@ getAttendance = ()=>{
 }
 
 getDateList=()=>{
-    var listDate = [];
+    listDate = [];
     var startDate =this.state.fromDate;
     var endDate = this.state.toDate;
     var dateMove = new Date(startDate);
@@ -95,7 +95,7 @@ render(){
             </div>
             <div className="row mt-4">
                 <span className="col-5">Class</span>
-                  <select className="sm-ml-5 col-7 form-control"  onChange={(event)=>{this.setState({class:event.target.value})}}>
+                  <select className="sm-ml-5 col-7 form-control"  onChange={(event)=>{this.setState({classid:event.target.value})}}>
                     <option value="---">---</option>
                     {this.state.classes ? this.state.classes.map((classinfo,index)=>
                         <option value={classinfo.id} key={index}>{classinfo.classname +" "+ classinfo.section} </option>
@@ -119,15 +119,23 @@ render(){
                     {
                     this.getDateList().map((date,index)=>(<th scope="col">{date}</th>))
                     }
+                    <th>Present And Absent Count</th>
                     </tr>
                 </thead>
                 <tbody>
                    {this.state.attendanceData.map((employeinfo,index)=>
                         (<tr>
                         <td scope="col">{employeinfo.name}</td>
-                        {employeinfo.attendancedata.map((attendanceinfo,index)=>(
-                            <td scope="col">{attendanceinfo.status}</td>
+                        {listDate.map((date,index)=>(
+                            <td scope="col">{employeinfo.attendancedata.find(attendace=>attendace.attendancedate === date) ? employeinfo.attendancedata.find(attendance=>attendance.attendancedate === date).status  :"--"}</td>
                         ))}
+                        <td>P -{employeinfo.attendancedata.filter(function(attendace){
+                                    return attendace.status === 'P' || attendace.status === 'p';
+                                }).length} <br />
+                            A -{employeinfo.attendancedata.filter(function(attendace){
+                                    return attendace.status === 'A' || attendace.status === 'a';
+                                }).length}
+                        </td>
                         </tr>))}
                 </tbody>
                 </table>

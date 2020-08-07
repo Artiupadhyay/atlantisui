@@ -45,7 +45,7 @@ class ViewClasses extends React.Component{
                 <Container-Fluid>
                 <SchoolNav />
                 {this.state.classes ?
-                <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5">
+                <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5 border border-success">
                     {this.state.classes.map((classInfo, index)=> <ClassCard key={index} classInfo={classInfo}/>)}
                 </div>:null
                 }

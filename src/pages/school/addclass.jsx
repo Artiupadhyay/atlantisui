@@ -67,7 +67,7 @@ function AddClass(props){
       {redirect?<Redirect to = '/' />:null}
       <Container-Fluid>
         <SchoolNav/>
-        <Row noGutters={true} className="justify-content-md-center">
+        <Row noGutters={true} className="justify-content-md-center border border-success">
           {message & status != 201?<div className="position-absolute alert alert-danger" role="alert">{message}</div> :(message ? <div className=" position-absolute alert alert-primary" role="alert">{message}</div>:null)}
           <Form.Group className="mt-5">
           <Row className="mt-2"> 

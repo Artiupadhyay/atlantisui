@@ -16,7 +16,7 @@ class ViewSubjectCard extends React.Component{
     render(){
             return(<>
                 {this.state.classinfo ?
-                <div className="card text-white bg-info mb-3 mr-auto ml-3 mt-4 " style={{maxWidth: "18rem"}}>
+                <div className="card text-white bg-info mb-3 mr-auto ml-3 mt-4 border border-success" style={{maxWidth: "18rem"}}>
                         <div className="card-header">{this.state.classinfo.classname + " " + this.state.classinfo.section}</div>
                         <div className="card-body">
                             <ul className="list-group ">

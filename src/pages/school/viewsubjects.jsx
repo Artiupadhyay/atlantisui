@@ -48,7 +48,7 @@ class ViewSubjects extends React.Component{
                     {this.state.redirect?<Redirect to = '/' />:null}
             
                     <SchoolNav />
-                    <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5">
+                    <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5 border border-success">
                         {this.state.classes?
                         this.state.classes.map((classinfo,index)=>
                         <ViewSubjectCard {...classinfo} key={index}/>)

@@ -133,7 +133,7 @@ function Login(props) {
             </div>
             <div className="md-form md-outline">
              <input type="button" className=" form-control mt-4 btn btn-primary" value="Submit" onClick={login} /></div>
-                <a className="link" href="#">Forgot password? Click here.</a>
+                {/* <a className="link" href="#">Forgot password? Click here.</a> */}
            
             </div>
 
