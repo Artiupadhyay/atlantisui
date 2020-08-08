@@ -1,6 +1,5 @@
 import React from 'react';
-import configs from './../../config';
-let status = '';
+
 class ViewSubjectCard extends React.Component{
 
     constructor(props) {

@@ -68,7 +68,7 @@ getDateList=()=>{
     var strDate = startDate;
 
     while (strDate < endDate){
-    var strDate = dateMove.toISOString().slice(0,10);
+    strDate = dateMove.toISOString().slice(0,10);
     listDate.push(strDate);
     dateMove.setDate(dateMove.getDate()+1);
     };
@@ -125,9 +125,9 @@ render(){
                 <tbody>
                    {this.state.attendanceData.map((employeinfo,index)=>
                         (<tr>
-                        <td scope="col">{employeinfo.name}</td>
+                        <td>{employeinfo.name}</td>
                         {listDate.map((date,index)=>(
-                            <td scope="col">{employeinfo.attendancedata.find(attendace=>attendace.attendancedate === date) ? employeinfo.attendancedata.find(attendance=>attendance.attendancedate === date).status  :"--"}</td>
+                            <td>{employeinfo.attendancedata.find(attendace=>attendace.attendancedate === date) ? employeinfo.attendancedata.find(attendance=>attendance.attendancedate === date).status  :"--"}</td>
                         ))}
                         <td>P -{employeinfo.attendancedata.filter(function(attendace){
                                     return attendace.status === 'P' || attendace.status === 'p';

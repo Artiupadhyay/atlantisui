@@ -27,11 +27,12 @@ import config from './../../config';
         }).catch(err=>console.log(err));
      }
 
+     console.log(error);
      return(
          <>
          {props.name?<div className=" d-flex row justify content between card">
              <div className="col-md-4">
-         <img className="card-img-top" src={"data:image/jpeg;base64,"+props.image} alt="Card image cap"/>
+         <img className="card-img-top" src={"data:image/jpeg;base64,"+props.image} alt="Card cap"/>
          <div className="card-body">
             <p className="card-text">Name:-{props.name}</p>
             <p className="card-text">Email:-{props.email}</p>

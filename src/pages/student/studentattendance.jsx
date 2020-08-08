@@ -4,7 +4,6 @@ import StudentNavbar from './components/studentnavbar';
 import configs  from '../config';
 
 var status1 = ''
-var status2 = ''
     
 
 class StudentAttendance extends React.Component {
@@ -49,7 +48,7 @@ getDateList=()=>{
     var strDate = startDate;
 
     while (strDate < endDate){
-    var strDate = dateMove.toISOString().slice(0,10);
+    strDate = dateMove.toISOString().slice(0,10);
     listDate.push(strDate);
     dateMove.setDate(dateMove.getDate()+1);
     };
@@ -87,8 +86,8 @@ console.log(this.state);
                 <tbody>
                    {this.state.attendanceData.attendancedata ? this.state.attendanceData.attendancedata.map((attendance,index)=>
                         (<tr key={index}>
-                        <td scope="col">{attendance.attendancedate}</td>
-                        <td scope="col">{attendance.status}</td>
+                        <td>{attendance.attendancedate}</td>
+                        <td>{attendance.status}</td>
                         </tr>)) :null}
                 </tbody>
                 </table>

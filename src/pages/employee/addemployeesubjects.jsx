@@ -2,7 +2,6 @@ import React from 'react';
 import EmployeeNavbar from './components/employeenavbar';
 import configs from './../config';
 import {Redirect} from 'react-router-dom';
-let status = ''
 let status2 = ''
 
 class AddEmployeeSubject extends React.Component{

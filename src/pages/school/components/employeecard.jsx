@@ -3,7 +3,7 @@ import React from 'react';
 import config from './../../config';
 
 function EmployeeCard(props) {
-    const status = ''
+    var status = ''
 
     const changeStatus =()=>{
         fetch(config.baseurl+'auth/update/account',{
@@ -42,7 +42,7 @@ function EmployeeCard(props) {
 
     return(
         <div className="mt-5 card  ml-3 shadow mr-auto border border-success" style={{width: "15rem"}}>
-            <img className="card-img-top"  src={"data:image/jpeg;base64,"+props.employeeinfo.image} style={{height:"15rem"}}  alt="Card image cap" />
+            <img className="card-img-top"  src={"data:image/jpeg;base64,"+props.employeeinfo.image} style={{height:"15rem"}}  alt="Card cap" />
             <div className="card-body">
             <h5 className="card-title">Name :- {props.employeeinfo.name}</h5>
             <p className="card-text">Account Status :-  {(props.employeeinfo.active).toString()}</p>

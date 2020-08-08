@@ -2,7 +2,6 @@ import React from 'react';
 import {Redirect} from 'react-router-dom';
 import EmployeeNav from './components/employeenavbar';
 import configs from './../config';
-import config from './../config';
 let status = ''
 
 class AddEmployeeVideo extends React.Component{

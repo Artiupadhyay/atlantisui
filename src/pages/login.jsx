@@ -7,7 +7,6 @@ function Login(props) {
     const [userName, setUserName] = React.useState('');
     const [password, setPassword] = React.useState('');
    
-    const [userInfo, setuserInfo] = React.useState(null);
     const [error, seterror] = React.useState(null);
     const [message, setMessage] = React.useState(null);
 

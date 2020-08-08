@@ -1,10 +1,7 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import EmployeeNavbar from './components/employeenavbar';
-import configs  from '../config';
 import config from '../config';
-import { Form } from 'react-bootstrap';
-var status1 = ''
 var status2 = ''
     
 

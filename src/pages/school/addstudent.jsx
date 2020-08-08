@@ -3,7 +3,6 @@ import {Redirect} from 'react-router-dom';
 import SchoolNav from './components/schoolnav';
 import configs  from './../config';
 import config from './../config';
-import { Form } from 'react-bootstrap';
 var status1 = ''
 var status2 = ''
     

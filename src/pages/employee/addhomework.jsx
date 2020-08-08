@@ -2,8 +2,6 @@ import React from 'react';
 import EmployeeNavbar from './components/employeenavbar';
 import configs from './../config';
 import {Redirect} from 'react-router-dom';
-import { Form } from 'react-bootstrap';
-let status = ''
 let status2 = ''
 
 class AddHomeWork extends React.Component{

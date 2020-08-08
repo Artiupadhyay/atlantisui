@@ -4,7 +4,6 @@ import EmployeeNavbar from './components/employeenavbar';
 import configs  from '../config';
 
 var status1 = ''
-var status2 = ''
     
 
 class ViewStudentsAttendances extends React.Component {
@@ -68,7 +67,7 @@ getDateList=()=>{
     var strDate = startDate;
 
     while (strDate < endDate){
-    var strDate = dateMove.toISOString().slice(0,10);
+    strDate = dateMove.toISOString().slice(0,10);
     listDate.push(strDate);
     dateMove.setDate(dateMove.getDate()+1);
     };
@@ -114,9 +113,9 @@ render(){
                 <tbody>
                    {this.state.attendanceData.map((employeinfo,index)=>
                         (<tr>
-                        <td scope="col">{employeinfo.name}</td>
+                        <td>{employeinfo.name}</td>
                         {employeinfo.attendancedata.map((attendanceinfo,index)=>(
-                            <td scope="col">{attendanceinfo.status}</td>
+                            <td>{attendanceinfo.status}</td>
                         ))}
                         </tr>))}
                 </tbody>

@@ -1,7 +1,5 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
 import config from './../../config';
-var status = ''
     
 
 class AddEmployeeAttendanceCard extends React.Component {
@@ -24,7 +22,6 @@ setAttendance=(employeeid, attendancestatus)=>{
         },
         body:JSON.stringify({id:employeeid,date:new Date().toISOString().split('T')[0], status:attendancestatus})
     }).then(res=>{
-        status =res.status;
         return res.json();
     })
     .then(data=>{

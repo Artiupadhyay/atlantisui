@@ -5,7 +5,6 @@ import configs  from './../config';
 import AddEmployeeAttendanceCard from './components/addemployeeattendancecard';
 
 var status1 = ''
-var status2 = ''
     
 
 class AddEmployeeAttendance extends React.Component {

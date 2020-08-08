@@ -36,7 +36,7 @@ class SchoolDash extends React.Component{
               <>
                 <div className="row d-flex flex-column justify-content mt-4 text-center">
                   <div class="text-center">
-                    <img src={"data:image/jpeg;base64,"+ localStorage.getItem('image')} style={{width:"20vw", height:"25vh"}}className="rounded mr-4"/>
+                    <img src={"data:image/jpeg;base64,"+ localStorage.getItem('image')} style={{width:"20vw", height:"25vh"}} className="rounded mr-4" alt="Card"/>
                   </div>
                   <h1>{this.state.schoolinfo.school.name}, {this.state.schoolinfo.schoolinfo.address1}, {this.state.schoolinfo.schoolinfo.address2}, {this.state.schoolinfo.schoolinfo.city}</h1>
                 </div>
