@@ -1,11 +1,16 @@
+
 .App {
   text-align: center;
 }
-
 .App-logo {
-  height: 40vmin;
   pointer-events: none;
 }
+.navbar{
+  box-shadow: 12px 10px 1px  rgba(102, 21, 84, 0.2);
+  background-color:purple;
+  color: white;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -27,20 +32,21 @@
 .App-link {
   color: #61dafb;
 }
-.content{
-  color:white;
-}
+
+
 .image{
-  background-image: url("bg4.jpg");
+  background-image: url("bg5.jpg");
   background-repeat: no-repeat;
-  min-height:650px;
+  height: 100vh;
+  width: 100vw;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
-.form{
-  color:#fff;
+
+.navItem {
+  color: white;
 }
 
 @keyframes App-logo-spin {
