@@ -1,34 +1,29 @@
 import React from 'react';
+import {Navbar, Nav ,NavDropdown, Image, Container} from 'react-bootstrap';
 
-function Navbar(props) {
+function AdminNavbar(props) {
   return(
-    <div className=" d-flex row navbar bg">
-    <div className=" col-md-10 nav nav-pills ">
-    <li className=" ml-3 p-2 bd-highlight">
-      <a className="content" href="/"><h1>Atlantis</h1></a>
-    </li>
-    
-    <li className="nav-item">
-      <a className="content p-4 nav-link" href="/admin/addschool">AddUser</a>
-    </li>
-
-    <li className="nav-item">
-      <a className=" content p-4 nav-link " href="/admin/viewschool">ViewUser</a>
-    </li>
-    </div>
-    <div className="col-md-1">
-    <div class="dropdown">
-        <a className="content p-4 nav-link" href="/admin/profile">Profile</a>
-    <div class="dropdown-content">
-      <li >Name</li>
-      <li >Role</li>
-      <a href="/logout">Logout</a>
-    </div>
-   </div> 
-  </div>
-  </div>
-  
+    <Navbar className="shadow-lg navbar" expand="lg" variant="dark">
+    <Container>
+    <Navbar.Brand href="/admin/dashboard">Atlantis</Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse id="basic-navbar-nav">
+      <Nav className="mr-auto">
+      <Nav.Link href="/admin/addschool">Add School</Nav.Link>
+      <Nav.Link href="/admin/viewschool">View School</Nav.Link>
+        </Nav>
+          <Nav>
+          <NavDropdown title={localStorage.getItem('name') || "User name"} id="basic-nav-dropdown">
+              <NavDropdown.Item href="/school/profile">
+                <Image src={localStorage.getItem('image')? "data:image/jpeg;base64,"+ localStorage.getItem('image') : require('./../../../user.png')} height={50} className="rounded"/>
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
+          </NavDropdown>  
+          </Nav> 
+        </Navbar.Collapse>
+        </Container>
+        </Navbar>
        );
 }
 
-export default Navbar;
+export default AdminNavbar;
