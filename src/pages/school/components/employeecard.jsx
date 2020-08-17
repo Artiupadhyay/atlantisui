@@ -3,7 +3,7 @@ import React from 'react';
 import config from './../../config';
 
 function EmployeeCard(props) {
-    const status = ''
+    var status = ''
 
     const changeStatus =()=>{
         fetch(config.baseurl+'auth/update/account',{
@@ -41,13 +41,15 @@ function EmployeeCard(props) {
     }
 
     return(
-        <div className="mt-5 card  ml-3 shadow mr-auto" style={{width: "18rem"}}>
-            <img className="card-img-top"  src={"data:image/jpeg;base64,"+props.employeeinfo.image}  alt="Card image cap" />
+        <div className="mt-5 card  ml-3 shadow mr-auto border border-success" style={{width: "15rem"}}>
+            <img className="card-img-top"  src={"data:image/jpeg;base64,"+props.employeeinfo.image} style={{height:"15rem"}}  alt="Card cap" />
             <div className="card-body">
             <h5 className="card-title">Name :- {props.employeeinfo.name}</h5>
             <p className="card-text">Account Status :-  {(props.employeeinfo.active).toString()}</p>
-            <button onClick={changeStatus} className={props.employeeinfo.active?" btn btn-danger":"btn btn-success"}>{props.employeeinfo.active ? "Deactivate account": "Activate account"}</button>
-            <button onClick={()=>handleDelete(props.employeeinfo.id)} className="btn btn-danger mt-3">Delete Employee</button>
+            <div className="d-flex flex-row"> 
+                <button onClick={changeStatus} className={props.employeeinfo.active?" btn btn-danger mx-auto":"btn btn-success mx-auto"}>{props.employeeinfo.active ? "Deactivate": "Activate"}</button>
+                <button onClick={()=>handleDelete(props.employeeinfo.id)} className="mx-auto btn btn-danger">Delete</button>
+            </div>
             </div>
         </div>
     );

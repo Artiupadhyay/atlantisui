@@ -5,7 +5,6 @@ import configs  from './../config';
 import AddStudentAttendanceCard from './components/addstudentattendancecard';
 
 var status1 = ''
-var status2 = ''
     
 
 class AddStudentsAttendance extends React.Component {
@@ -21,7 +20,7 @@ class AddStudentsAttendance extends React.Component {
 
 
 componentDidMount = ()=>{
-  fetch(configs.baseurl+'school/employee',{
+  fetch(configs.baseurl+'employee/student',{
       method:'get',
       headers:{
           'auth':localStorage.getItem('token')
@@ -32,19 +31,20 @@ componentDidMount = ()=>{
   })
   .then(data=>{
       if(status1 === 200 || status1 === 201){
-         this.setState({employees:data});
+         this.setState({students:data});
       }
   })
 }
 
 
 render(){
- // if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
- //   localStorage.removeItem('token');
-  //  localStorage.removeItem('image');
-    //localStorage.removeItem('role');
-   // this.setState({redrect:true});
- // }
+ 
+  if(!['Teacher','Reception','Accountant'].includes(localStorage.getItem('role'))  && ! this.state.redirect){
+    localStorage.removeItem('token');
+    localStorage.removeItem('image');
+    localStorage.removeItem('role');
+    this.setState({redirect:true});
+ }
 
 
     return(<>
@@ -55,14 +55,11 @@ render(){
         <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5">
           {this.state.error?<div className="alert alert-danger" role="alert">{this.state.message}</div> :(this.state.success ? <div className="alert alert-primary" role="alert">{this.state.message}</div>:null)}
           <div className="border-primary d-flex flex-column mt-5">
-              {this.state.employees.map((employeeinfo,index)=><AddStudentAttendanceCard employeeinfo={employeeinfo} key={index}/>
-              )}
-              <div className="row mt-4">
-                <button className="sm-ml-5 col-5 mr-2 form-control btn btn-primary" >Submit</button>
-                <button className="sm-ml-2 col-5 form-control btn btn-danger" >Cancel</button>
-              </div>
+              {this.state.students? this.state.students.map((studentinfo,index)=><AddStudentAttendanceCard studentinfo={studentinfo} key={index}/>
+              ):null}
+              
           </div>
-        </div>:<>Kindly Add some employees</>}
+        </div>
       </Container-Fluid>
       </>
     );

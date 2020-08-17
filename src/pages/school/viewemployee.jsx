@@ -37,14 +37,14 @@ class ViewEmployee extends React.Component{
             localStorage.removeItem('token');
             localStorage.removeItem('image');
             localStorage.removeItem('role');
-            this.setState({redrect:true});
+            this.setState({redirect:true});
           }
             return(
                 <>{this.state.redirect?<Redirect to = '/' />:null}
                 <Container-Fluid>
                 <SchoolNav />
                 {this.state.employee?
-                <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5">
+                <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5 border border-info">
                      {this.state.employee.map((employeeinfo, index)=>
                         <EmployeeCard employeeinfo ={employeeinfo}/>
                        )} 

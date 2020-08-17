@@ -3,9 +3,9 @@ import React from 'react';
 function Navbar(props) {
   return(
     <div className=" d-flex row navbar bg">
-    <div className className=" col-md-10 nav nav-pills ">
+    <div className=" col-md-10 nav nav-pills ">
     <li className=" ml-3 p-2 bd-highlight">
-      <a className="content" href="#"><h1>Atlantis</h1></a>
+      <a className="content" href="/"><h1>Atlantis</h1></a>
     </li>
     
     <li className="nav-item">
@@ -18,17 +18,15 @@ function Navbar(props) {
     </div>
     <div className="col-md-1">
     <div class="dropdown">
-        <a className="content p-4 nav-link" href="#">Profile</a>
+        <a className="content p-4 nav-link" href="/admin/profile">Profile</a>
     <div class="dropdown-content">
-      <a href="#">Name</a>
-      <a href="#">Role</a>
+      <li >Name</li>
+      <li >Role</li>
       <a href="/logout">Logout</a>
     </div>
    </div> 
   </div>
   </div>
-  
-  
   
        );
 }

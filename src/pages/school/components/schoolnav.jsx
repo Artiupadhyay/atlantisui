@@ -1,6 +1,5 @@
 import React from 'react';
 import {Navbar, Nav ,NavDropdown, Image, Container} from 'react-bootstrap'
-import config from '../../config';
 
 function SchoolNav(props){
     return(

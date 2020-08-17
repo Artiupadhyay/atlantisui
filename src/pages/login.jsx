@@ -7,7 +7,6 @@ function Login(props) {
     const [userName, setUserName] = React.useState('');
     const [password, setPassword] = React.useState('');
    
-    const [userInfo, setuserInfo] = React.useState(null);
     const [error, seterror] = React.useState(null);
     const [message, setMessage] = React.useState(null);
 
@@ -42,13 +41,16 @@ function Login(props) {
                     props.history.push('/school/dashboard');
                 }
                 if(data.role === 'Teacher'){
-                    props.history.push('/teacher/schooldash/');
+                    props.history.push('/employee/employeedashboard');
                 }
                 if(data.role === 'Reception'){
-                    props.history.push('/reception/schooldash/');
+                    props.history.push('/employee/employeedashboard');
                 }
                 if(data.role === 'Accountant'){
-                    props.history.push('/accountant /schooldash/');
+                    props.history.push('/employee/employeedashboard');
+                }
+                if(data.role === 'Student'){
+                    props.history.push('/student/dashboard');
                 }
                 seterror(null);
                 setMessage("Login Successfull")
@@ -85,13 +87,16 @@ function Login(props) {
                     setpath('/school/dashboard');
                 }
                 if(localStorage.getItem('role') === 'Teacher'){
-                    setpath('/teacher/teacherdash/');
+                    setpath('/employee/employeedashboard');
                 }
                 if(localStorage.getItem('role') === 'Reception'){
-                    setpath('/reception/receptiondash/');
+                    setpath('/employee/employeedashboard');
                 }
                 if(localStorage.getItem('role') === 'Accountant'){
-                    setpath('/accountant /accountant/');
+                    setpath('/employee/employeedashboard');
+                }
+                if(localStorage.getItem('role') === 'Student'){
+                    setpath('/student/dashboard')
                 }
                 setRedirect(true);
             }
@@ -99,6 +104,7 @@ function Login(props) {
                 localStorage.removeItem('token');
                 localStorage.removeItem('role');
                 localStorage.removeItem('image');
+                localStorage.removeItem('name')
             }
         })
 
@@ -126,7 +132,7 @@ function Login(props) {
             </div>
             <div className="md-form md-outline">
              <input type="button" className=" form-control mt-4 btn btn-primary" value="Submit" onClick={login} /></div>
-                <a className="link" href="#">Forgot password? Click here.</a>
+                {/* <a className="link" href="#">Forgot password? Click here.</a> */}
            
             </div>
 

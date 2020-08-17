@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from './components/navbar';
 import config from './../config';
 import { Redirect } from 'react-router-dom';
-import {Form,Row,Col,Button,Dropdown,InputGroup,FormControl,DropdownButton} from 'react-bootstrap';
 
 
 function AddSchool(props) {
@@ -54,7 +53,7 @@ function AddSchool(props) {
       setstatus(res.status);
       return res.json();
     }).then(data=>{
-      if(status == 201){
+      if(status === 201){
         seterror(null);
         setMessage(role+" register successful!")
       }
@@ -67,7 +66,7 @@ function AddSchool(props) {
 
   }
 
-  if(localStorage.getItem('role')!='Admin' && !redirect){
+  if(localStorage.getItem('role')!=='Admin' && !redirect){
     localStorage.removeItem('token');
     localStorage.removeItem('image');
     localStorage.removeItem('role');

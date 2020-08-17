@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import Login from './pages/login';
@@ -24,8 +23,9 @@ import ViewEmployeeAttendance from './pages/school/viewemployeeattendance';
 import ViewStudentAttendance from './pages/school/viewstudentattendance';
 import AddTimeTable from './pages/school/addtimetable';
 import ViewTimeTable from './pages/school/viewtimetable';
+
 import EmployeeDashBoard from './pages/employee/employeedashboard';
-import EmployeeAddStudents from './pages/employee/addstudents';
+import EmployeAddStudent from './pages/employee/employeeaddstudent';
 import ViewStudent from './pages/employee/viewstudent';
 import AddEmployeeSubject from './pages/employee/addemployeesubjects';
 import ViewEmployeeSubject from './pages/employee/viewemployeesubject';
@@ -35,6 +35,13 @@ import AddHomework from './pages/employee/addhomework';
 import ViewHomework from './pages/employee/viewhomework';
 import AddEmployeeVideo from './pages/employee/addemployeevideo';
 import ViewEmployeeVideo from './pages/employee/viewemployeevideo';
+import EmployeeProfile from './pages/employee/profile';
+
+import StudentDashboard from './pages/student/studentdashboard';
+import StudentAttendance from './pages/student/studentattendance';
+import ViewStudentHomework from './pages/student/viewstudenthomework';
+import ViewTutorial from './pages/student/viewtutorial';
+import StudentProfile from './pages/student/studentprofile';
 
 
 import {
@@ -72,21 +79,25 @@ function App() {
            {/* School Route end here */}
            {/* Employee route start */}
            <Route path='/employee/employeedashboard' exact component={EmployeeDashBoard} />
-           <Route path='/employee/add/students' exact component={EmployeeAddStudents} />
+           <Route path='/employee/add/student' exact component={EmployeAddStudent} />
            <Route path='/employee/view/student' exact component={ViewStudent} />
-           <Route path='/employee/add/students/attendance' exact component={AddStudentAttendance} />
-           <Route path='/employee/view/students/attendances' exact component={ViewStudentAttendances} />
+           <Route path='/employee/add/student/attendance' exact component={AddStudentAttendance} />
+           <Route path='/employee/view/student/attendance' exact component={ViewStudentAttendances} />
            <Route path='/employee/add/subject' exact component={AddEmployeeSubject} />
-           <Route path='/employee/view/employee/subject' exact component={ViewEmployeeSubject} />
-           <Route path='/employee/add/employee/video' exact component={AddEmployeeVideo} />
-           <Route path='/employee/view/employee/video' exact component={ViewEmployeeVideo} />
+           <Route path='/employee/view/subjects' exact component={ViewEmployeeSubject} />
+           <Route path='/employee/add/tutorial' exact component={AddEmployeeVideo} />
+           <Route path='/employee/view/tutorial' exact component={ViewEmployeeVideo} />
            <Route path='/employee/add/homework' exact component={AddHomework} />
            <Route path='/employee/view/homework' exact component={ViewHomework} />
-           
-           
-
-
+           <Route path='/employee/profile' exact component={EmployeeProfile} />
            {/* Employee Route End */}
+           {/* Student Route Start */}
+           <Route path='/student/dashboard' exact component = {StudentDashboard}/>
+           <Route path='/student/view/homework' exact component = {ViewStudentHomework} />
+           <Route path='/student/view/tutorial' exact component = {ViewTutorial} />
+           <Route path='/student/view/attendance' exact component = {StudentAttendance} />
+           <Route path='/student/view/profile' exact component = {StudentProfile} />
+           {/* Student Route End */}
         </Router>
     );
 }

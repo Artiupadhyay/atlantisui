@@ -1,10 +1,10 @@
 import React from 'react';
-import EmployeeNavbar from './components/employeenavbar';
+import StudentNavbar from './components/studentnavbar';
 import {Redirect} from 'react-router-dom';
 
 
 
-class EmployeeDashBoard extends React.Component{
+class StudentDashboard extends React.Component{
     constructor(){
         super();
         this.state={
@@ -14,7 +14,7 @@ class EmployeeDashBoard extends React.Component{
       
 
       render() {
-        if(!['Teacher','Reception','Accountant'].includes(localStorage.getItem('role'))  && ! this.state.redirect){
+        if(localStorage.getItem('role') !== 'Student'  && ! this.state.redirect){
           localStorage.removeItem('token');
           localStorage.removeItem('image');
           localStorage.removeItem('role');
@@ -23,7 +23,7 @@ class EmployeeDashBoard extends React.Component{
         return(
             <>
              {this.state.redirect ? <Redirect to = '/' />:null}
-            <EmployeeNavbar/>
+            <StudentNavbar/>
            <div className="row d-flex justify-content">
             </div>
             </>
@@ -32,4 +32,4 @@ class EmployeeDashBoard extends React.Component{
       }
       }
     
-    export default EmployeeDashBoard;
+    export default StudentDashboard;

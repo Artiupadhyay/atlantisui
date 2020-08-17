@@ -1,12 +1,12 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import EmployeeNavbar from './components/employeenavbar';
+import StudentNavbar from './components/studentnavbar';
 import configs  from '../config';
 
 var status1 = ''
     
 
-class ViewStudentsAttendances extends React.Component {
+class StudentAttendance extends React.Component {
   
   constructor() {
     super();
@@ -17,29 +17,10 @@ class ViewStudentsAttendances extends React.Component {
     
 }
 
-componentDidMount = ()=>{
-    fetch(configs.baseurl+'school/class',{
-        method:'get',
-        headers:{
-            'auth':localStorage.getItem('token')
-        }
-    }).then(res=>{
-        status1 = res.status
-        return res.json()
-    })
-    .then(data=>{
-        if(status1 === 200 || status1 === 201){
-            data.sort((a, b) => a.classname - b.classname);
-            this.setState({classes:data});
-        }
-    })
-  }
-  
-
 
 getAttendance = ()=>{
-  fetch(configs.baseurl+'attendance/student',{
-      method:'put',
+  fetch(configs.baseurl+'attendance/student/self',{
+      method:'post',
       headers:{
           'auth':localStorage.getItem('token'),
           'Content-Type':'application/json'
@@ -77,8 +58,8 @@ getDateList=()=>{
 
 
 render(){
-
-    if(!['Teacher','Reception','Accountant'].includes(localStorage.getItem('role'))  && ! this.state.redirect){
+console.log(this.state);
+    if(localStorage.getItem('role') !== 'Student'  && ! this.state.redirect){
         localStorage.removeItem('token');
         localStorage.removeItem('image');
         localStorage.removeItem('role');
@@ -87,7 +68,7 @@ render(){
     return(<>
       <Container-Fluid>
         {this.state.redirect ? <Redirect to = '/' />:null}
-        <EmployeeNavbar/>
+        <StudentNavbar />
         <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-4">
             <div className="d-flex row mt-4 align-content-center">
                 <span className="sm-ml-5 mr-2" >Show Student Attendance</span>
@@ -102,22 +83,12 @@ render(){
        {this.state.attendanceData? <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5">
             <div class="table-responsive">
                 <table class="table table-sm table-bordered">
-                <thead>
-                    <tr>
-                    <th scope="col">Student Name/Date</th>
-                    {
-                    this.getDateList().map((date,index)=>(<th scope="col">{date}</th>))
-                    }
-                    </tr>
-                </thead>
                 <tbody>
-                   {this.state.attendanceData.map((employeinfo,index)=>
-                        (<tr>
-                        <td>{employeinfo.name}</td>
-                        {employeinfo.attendancedata.map((attendanceinfo,index)=>(
-                            <td>{attendanceinfo.status}</td>
-                        ))}
-                        </tr>))}
+                   {this.state.attendanceData.attendancedata ? this.state.attendanceData.attendancedata.map((attendance,index)=>
+                        (<tr key={index}>
+                        <td>{attendance.attendancedate}</td>
+                        <td>{attendance.status}</td>
+                        </tr>)) :null}
                 </tbody>
                 </table>
             </div>
@@ -127,5 +98,5 @@ render(){
     );
 }
 }
-export default ViewStudentsAttendances;
+export default StudentAttendance;
            

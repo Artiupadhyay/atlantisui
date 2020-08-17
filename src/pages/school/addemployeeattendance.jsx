@@ -5,7 +5,6 @@ import configs  from './../config';
 import AddEmployeeAttendanceCard from './components/addemployeeattendancecard';
 
 var status1 = ''
-var status2 = ''
     
 
 class AddEmployeeAttendance extends React.Component {
@@ -43,7 +42,7 @@ render(){
     localStorage.removeItem('token');
     localStorage.removeItem('image');
     localStorage.removeItem('role');
-    this.setState({redrect:true});
+    this.setState({redirect:true});
   }
 
 
@@ -57,10 +56,6 @@ render(){
           <div className="border-primary d-flex flex-column mt-5">
               {this.state.employees.map((employeeinfo,index)=><AddEmployeeAttendanceCard employeeinfo={employeeinfo} key={index}/>
               )}
-              <div className="row mt-4">
-                <button className="sm-ml-5 col-5 mr-2 form-control btn btn-primary" >Submit</button>
-                <button className="sm-ml-2 col-5 form-control btn btn-danger" >Cancel</button>
-              </div>
           </div>
         </div>:<>Kindly Add some employees</>}
       </Container-Fluid>

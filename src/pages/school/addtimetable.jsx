@@ -107,7 +107,7 @@ class AddTimeTable extends React.Component{
             localStorage.removeItem('token');
             localStorage.removeItem('image');
             localStorage.removeItem('role');
-            this.setState({redrect:true});
+            this.setState({redirect:true});
         }
 
         console.log(this.state);
@@ -115,7 +115,7 @@ class AddTimeTable extends React.Component{
             <Container-Fluid>
               <SchoolNav/>
               {this.state.classes ? 
-              <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5">
+              <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5 border border-success">
                 <div className="border-primary d-flex flex-column mt-5">
                     <div className="row mt-4">
                         <span className="col-5">Class</span>

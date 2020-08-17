@@ -5,6 +5,7 @@ function Logout(){
     localStorage.clear('token');
     localStorage.clear('image');
     localStorage.clear('role');
+    localStorage.removeItem('name')
     return (
         <Redirect to ='/' />
     );

@@ -1,14 +1,11 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import EmployeeNavbar from './components/employeenavbar';
-import configs  from '../config';
 import config from '../config';
-import { Form } from 'react-bootstrap';
-var status1 = ''
 var status2 = ''
     
 
-class AddStudents extends React.Component {
+class EmployeAddStudents extends React.Component {
   
   constructor() {
     super();
@@ -42,24 +39,6 @@ class AddStudents extends React.Component {
 
 
 
-componentDidMount = ()=>{
-  fetch(configs.baseurl+'school/class',{
-      method:'get',
-      headers:{
-          'auth':localStorage.getItem('token')
-      }
-  }).then(res=>{
-      status1 = res.status
-      return res.json()
-  })
-  .then(data=>{
-      if(status1 === 200 || status1 === 201){
-          data.sort((a, b) => a.classname - b.classname);
-          this.setState({classes:data});
-      }
-  })
-}
-
 addStudent= ()=>{
   const formData = new FormData();
 
@@ -76,7 +55,6 @@ addStudent= ()=>{
   formData.append('state',this.state.state);
   formData.append('zip',this.state.zip);
 
-  formData.append('classid',this.state.class);
   formData.append('fathername',this.state.fatherName);
   formData.append('mothername', this.state.motherName);
   formData.append('mobileno1',this.state.mobileNo1);
@@ -86,7 +64,7 @@ addStudent= ()=>{
   formData.append('srno',this.state.srno);
   formData.append('promotedclassid', this.state.class);
 
-  fetch(config.baseurl+'school/register/student',{
+  fetch(config.baseurl+'employee/student',{
     method:'post',
     headers:{
       'auth':localStorage.getItem('token')
@@ -110,13 +88,13 @@ addStudent= ()=>{
 }
 
 render(){
-  // if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
-  //   localStorage.removeItem('token');
-  //   localStorage.removeItem('image');
-  //   localStorage.removeItem('role');
-  //   this.setState({redrect:true});
-  // }
-
+ 
+  if(!['Teacher','Reception','Accountant'].includes(localStorage.getItem('role'))  && ! this.state.redirect){
+    localStorage.removeItem('token');
+    localStorage.removeItem('image');
+    localStorage.removeItem('role');
+    this.setState({redirect:true});
+ }
 
     return(<>
       <Container-Fluid>
@@ -205,4 +183,4 @@ render(){
     );
 }
 }
-export default AddStudents;
+export default EmployeAddStudents;

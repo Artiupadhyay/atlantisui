@@ -4,7 +4,6 @@ import SchoolNav from './components/schoolnav';
 import configs from './../config';
 import config from './../config';
 let status = ''
-let status1 = ''
 
 class ViewTimeTable extends React.Component{
     constructor() {
@@ -87,7 +86,7 @@ class ViewTimeTable extends React.Component{
             localStorage.removeItem('token');
             localStorage.removeItem('image');
             localStorage.removeItem('role');
-            this.setState({redrect:true});
+            this.setState({redirect:true});
         }
 
         console.log(this.state);
@@ -95,7 +94,7 @@ class ViewTimeTable extends React.Component{
             <Container-Fluid>
               <SchoolNav/>
               {this.state.classes ? 
-              <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5">
+              <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5 border border-success">
                 <div className="border-primary d-flex flex-column mt-5">
                     <div className="row mt-4">
                         <span className="col-5">Class</span>
@@ -126,7 +125,7 @@ class ViewTimeTable extends React.Component{
                                     <th scope="col">Monday</th>
                                     {this.state.timetable.monday.map((dayinfo,index)=>
                                     (
-                                    <td scope="col">{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
+                                    <td>{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
                                     
                                     ))}
                                     </tr>
@@ -134,7 +133,7 @@ class ViewTimeTable extends React.Component{
                                     <th scope="col">Tuesday</th>
                                     {this.state.timetable.tuesday.map((dayinfo,index)=>
                                     (
-                                    <td scope="col">{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
+                                    <td>{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
                                     
                                     ))}
                                     </tr>
@@ -142,7 +141,7 @@ class ViewTimeTable extends React.Component{
                                     <th scope="col">Wednesday</th>
                                     {this.state.timetable.wednesday.map((dayinfo,index)=>
                                     (
-                                    <td scope="col">{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
+                                    <td>{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
                                     
                                     ))}
                                     </tr>
@@ -150,7 +149,7 @@ class ViewTimeTable extends React.Component{
                                     <th scope="col">Thursday</th>
                                     {this.state.timetable.thursday.map((dayinfo,index)=>
                                     (
-                                    <td scope="col">{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
+                                    <td>{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
                                     
                                     ))}
                                     </tr>
@@ -158,7 +157,7 @@ class ViewTimeTable extends React.Component{
                                     <th scope="col">Friday</th>
                                     {this.state.timetable.monday.map((dayinfo,index)=>
                                     (
-                                    <td scope="col">{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
+                                    <td>{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
                                     
                                     ))}
                                     </tr>
@@ -166,7 +165,7 @@ class ViewTimeTable extends React.Component{
                                     <th scope="col">Saturday</th>
                                     {this.state.timetable.monday.map((dayinfo,index)=>
                                     (
-                                    <td scope="col">{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
+                                    <td>{dayinfo.subjectname +" by "+ dayinfo.teachername}</td>
                                     
                                     ))}
                                     </tr>

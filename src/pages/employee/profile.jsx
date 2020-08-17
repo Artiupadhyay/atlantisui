@@ -1,10 +1,10 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import SchoolNav from './components/schoolnav';
+import Employeenavbar from './components/employeenavbar';
 import config from  './../config';
     
 let status = ''
-class Profile extends React.Component {
+class EmployeeProfile extends React.Component {
   
   constructor() {
     super();
@@ -42,6 +42,10 @@ class Profile extends React.Component {
     const formData = new FormData();
     formData.append('name', this.state.name)
     formData.append('email', this.state.email)
+    formData.append('mobile', this.state.mobile)
+    formData.append('dob', this.state.dob)
+    formData.append('fathername', this.state.fathername)
+    formData.append('mothername', this.state.mothername)
     formData.append('address1', this.state.address1)
     formData.append('address2', this.state.address2)
     formData.append('address3', this.state.address3)
@@ -75,7 +79,7 @@ class Profile extends React.Component {
   }
     
 render(){
-      if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
+      if(!['Teacher','Reception','Accountant'].includes(localStorage.getItem('role'))  && ! this.state.redirect){
         localStorage.removeItem('token');
         localStorage.removeItem('image');
         localStorage.removeItem('role');
@@ -86,17 +90,29 @@ render(){
       {this.state.redirect?<Redirect to = '/' />:null}
             
       <Container-Fluid>
-      <SchoolNav/>
+      <Employeenavbar />
       {this.state.error?<div className="alert alert-danger" role="alert">{this.state.message}</div> :(this.state.success ? <div className="alert alert-primary" role="alert">{this.state.message}</div>:null)}
-      <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5 border border-success">
+      <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5">
           <div className="border-primary d-flex flex-column mt-5">
               <div className="row mt-4 ">
-                <span className="col-5">School Name</span>
+                <span className="col-5">Name</span>
                 <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.name} onChange={(event)=>this.setState({name:event.target.value})}/>
               </div>
               <div className="row mt-4">
                 <span className="col-5">Email</span>
                 <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.email} onChange={(event)=>this.setState({email:event.target.value})}/>
+              </div>
+              <div className="row mt-4">
+                <span className="col-5">Mobile</span>
+                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.mobile} onChange={(event)=>this.setState({mobile:event.target.value})}/>
+              </div>
+              <div className="row mt-4">
+                <span className="col-5">Father Name</span>
+                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.fathername} onChange={(event)=>this.setState({fathername:event.target.value})}/>
+              </div>
+              <div className="row mt-4">
+                <span className="col-5">Mother Name</span>
+                <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.mothername} onChange={(event)=>this.setState({mothername:event.target.value})}/>
               </div>
               <div className="row mt-4 ">
                 <span className="col-5">Address Line 1</span>
@@ -122,6 +138,10 @@ render(){
                 <span className="col-5">Pin Code</span>
                 <input type ="text" className="sm-ml-5 col-7 form-control" value={this.state.zip} onChange={(event)=>this.setState({zip:event.target.value})}/>
               </div>
+              <div className="row mt-4 ">
+                <span className="col-5">DOB</span>
+                <input type ="date" className="sm-ml-5 col-7 form-control" value={this.state.dob} onChange={(event)=>this.setState({dob:event.target.value})}/>
+              </div>
               <div className="row mt-4">
                 <button className="sm-ml-5 col-5 mr-2 form-control btn btn-primary" onClick={ this.updateProfile}>Update Profile</button>
                 <button className="sm-ml-2 col-5 form-control btn btn-danger" onClick={()=>window.location.reload(true)}>Cancel</button>
@@ -133,5 +153,5 @@ render(){
     );
 }
 }
-export default Profile;
+export default EmployeeProfile;
            

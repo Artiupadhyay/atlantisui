@@ -1,11 +1,11 @@
 import React from 'react';
-import EmployeeNavbar from './components/employeenavbar';
-import configs from './../config';
+import StudentNavbar from './components/studentnavbar';
+import configs from '../config';
 import {Redirect} from 'react-router-dom';
 import HomeworkCard from './components/homeworkcard';
 let status = ''
 
-class ViewHomeWork extends React.Component{
+class ViewStudentHomework extends React.Component{
     constructor() {
         super();
         this.state = {
@@ -16,7 +16,7 @@ class ViewHomeWork extends React.Component{
     }
 
     componentDidMount = ()=>{
-        fetch(configs.baseurl + "employee/homework",{
+        fetch(configs.baseurl + "student/homework",{
             method:'get',
             headers:{
                 'auth':localStorage.getItem('token')
@@ -35,7 +35,7 @@ class ViewHomeWork extends React.Component{
     }
     render(){
 
-        if(!['Teacher','Reception','Accountant'].includes(localStorage.getItem('role'))  && ! this.state.redirect){
+        if(localStorage.getItem('role') !== 'Student'  && ! this.state.redirect){
             localStorage.removeItem('token');
             localStorage.removeItem('image');
             localStorage.removeItem('role');
@@ -46,7 +46,7 @@ class ViewHomeWork extends React.Component{
             <>
             {this.state.redirect?<Redirect to = '/' />:null}
             <Container-Fluid>
-              <EmployeeNavbar/>
+              <StudentNavbar/>
              
               <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5">
                  {this.state.error?<div className="alert alert-danger" role="alert">{this.state.message}</div> :(this.state.success ? <div className="alert alert-primary" role="alert">{this.state.message}</div>:null)}
@@ -58,4 +58,4 @@ class ViewHomeWork extends React.Component{
     };
     
   }
-export default ViewHomeWork;
+export default ViewStudentHomework;

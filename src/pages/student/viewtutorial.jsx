@@ -1,12 +1,11 @@
 import React from 'react';
 import {Redirect}  from 'react-router-dom';
-import SchoolNav from './components/schoolnav';
+import StudentNavbar from './components/studentnavbar';
 import configs from '../config';
-import config from '../config';
 import VideoCard from './components/videocard';
 let status = ''
 
-class ViewVideos extends React.Component{
+class ViewTutorial extends React.Component{
     constructor() {
         super();
         this.state = {
@@ -17,48 +16,29 @@ class ViewVideos extends React.Component{
         };
     }
 
-    componentDidMount = ()=>{
-        fetch(configs.baseurl+'school/class',{
+    componentDidMount =()=>{
+        fetch(configs.baseurl+'student/subject',{
             method:'get',
             headers:{
                 'auth':localStorage.getItem('token')
-            }
-        }).then(res=>{
-            status = res.status
-            return res.json()
+                }
+        })
+        .then(res =>{
+            status =  res.status;
+            return res.json();
         })
         .then(data=>{
-            if(status === 200 || status === 201){
+            if(status ===200 || status ===201){
                 data.sort((a, b) => a.classname - b.classname);
-                this.setState({classes:data});
-            }
-        })
-    }
-
-    handleClassChange = (classid)=>{
-        fetch(config.baseurl +'school/class/subject',{
-            method:'post',
-            headers:{
-                'Content-Type':'application/json',
-                'auth':localStorage.getItem('token')
-            },
-            body: JSON.stringify({classid:classid})
-        }).then(res=>{
-            status = res.status;
-            return res.json();
-        }).then(data=>{
-            if(status === 200 || status ===201){
-                this.setState({subjects: data});
+                this.setState({subjects:data});
             }
             else{
-                console.log("err"+data)
+                console.log('error')
             }
         })
-
     }
 
     
-
     handleSubjectChange =(subjectid)=>{
         fetch(configs.baseurl+'school/get/subject/video',{
             method:'post',
@@ -85,31 +65,23 @@ class ViewVideos extends React.Component{
 
     render(){
 
-        if(localStorage.getItem('role')!=='School' && ! this.state.redirect){
+        if(localStorage.getItem('role') !== 'Student'  && ! this.state.redirect){
             localStorage.removeItem('token');
             localStorage.removeItem('image');
             localStorage.removeItem('role');
             this.setState({redirect:true});
-        }
+         }
 
         return(
             <>
             {this.state.redirect?<Redirect to = '/' />:null}
             
             <Container-Fluid>
-              <SchoolNav/>
-              {this.state.classes ? 
-              <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5 border border-success">
+              <StudentNavbar />
+              {this.state.subjects ? 
+              <div className="d-flex align-content-center align-self-center flex-column flex-wrap container shadow mt-5 mb-5 pb-5">
                 <div className="border-primary d-flex flex-column mt-5">
-                    <div className="row mt-4">
-                        <span className="col-5">Class</span>
-                        <select className="sm-ml-5 col-7 form-control"  onChange={(event)=> this.handleClassChange(event.target.value)}>
-                        <option value="---">---</option>
-                            {this.state.classes.map((classinfo,index)=>
-                                <option value={classinfo.id} key={index}>{classinfo.classname +" "+ classinfo.section} </option>
-                            )}
-                        </select>
-                    </div>
+                   
                     <div className="row mt-4">
                         <span className="col-5">Subject  </span>
                         <select className="sm-ml-5 col-7 form-control"  onChange={(event)=>this.handleSubjectChange(event.target.value)}>
@@ -120,7 +92,7 @@ class ViewVideos extends React.Component{
                         </select>
                     </div>
                 </div>
-                </div> :<>Kindly Add Some classes </>}
+                </div> :<>Kindly Add Some subjects </>}
                 {this.state.videos ?
                 
                     <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5">
@@ -136,4 +108,4 @@ class ViewVideos extends React.Component{
     };
     
   }
-export default ViewVideos;
+export default ViewTutorial;
