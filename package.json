@@ -2,6 +2,10 @@
   "name": "school_mngmt",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.19.0",
+    "npm": "6.13.4"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@testing-library/jest-dom": "^4.2.4",
@@ -22,12 +26,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": " react-scripts build",
-    "start-dev": "env-cmd dev react-scripts start",
-    "build-dev": "env-cmd dev react-scripts build",
-    "start-qa": "env-cmd qa react-scripts start",
-    "build-qa": "env-cmd qa react-scripts build",
-    "start-prod": " env-cmd prod react-scripts start",
-    "build-prod": " env-cmd prod react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
