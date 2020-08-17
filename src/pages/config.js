@@ -1,5 +1,5 @@
 var config = {
-    baseurl:"http://localhost:8000/"
+    baseurl:"https://atlantisbackend.herokuapp.com/"
 }
 
 export default config;
