@@ -4,7 +4,7 @@ import EmployeeNavbar from './components/employeenavbar';
 import configs  from '../config';
 
 var status1 = ''
-    
+var listDate = [];
 
 class ViewStudentsAttendances extends React.Component {
   
@@ -60,7 +60,6 @@ getAttendance = ()=>{
 }
 
 getDateList=()=>{
-    var listDate = [];
     var startDate =this.state.fromDate;
     var endDate = this.state.toDate;
     var dateMove = new Date(startDate);
@@ -108,15 +107,24 @@ render(){
                     {
                     this.getDateList().map((date,index)=>(<th scope="col">{date}</th>))
                     }
+                
+                    <th>Present And Absent Count</th>
                     </tr>
                 </thead>
                 <tbody>
-                   {this.state.attendanceData.map((employeinfo,index)=>
+                {this.state.attendanceData.map((studentinfo,index)=>
                         (<tr>
-                        <td>{employeinfo.name}</td>
-                        {employeinfo.attendancedata.map((attendanceinfo,index)=>(
-                            <td>{attendanceinfo.status}</td>
+                        <td>{studentinfo.name}</td>
+                        {listDate.map((date,index)=>(
+                            <td>{studentinfo.attendancedata.find(attendace=>attendace.attendancedate === date) ? studentinfo.attendancedata.find(attendance=>attendance.attendancedate === date).status  :"--"}</td>
                         ))}
+                        <td>P -{studentinfo.attendancedata.filter(function(attendace){
+                                    return attendace.status === 'P' || attendace.status === 'p';
+                                }).length} <br />
+                            A -{studentinfo.attendancedata.filter(function(attendace){
+                                    return attendace.status === 'A' || attendace.status === 'a';
+                                }).length}
+                        </td>
                         </tr>))}
                 </tbody>
                 </table>

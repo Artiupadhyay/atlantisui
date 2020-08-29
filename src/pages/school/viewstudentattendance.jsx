@@ -123,16 +123,16 @@ render(){
                     </tr>
                 </thead>
                 <tbody>
-                   {this.state.attendanceData.map((employeinfo,index)=>
+                   {this.state.attendanceData.map((studentinfo,index)=>
                         (<tr>
-                        <td>{employeinfo.name}</td>
+                        <td>{studentinfo.name}</td>
                         {listDate.map((date,index)=>(
-                            <td>{employeinfo.attendancedata.find(attendace=>attendace.attendancedate === date) ? employeinfo.attendancedata.find(attendance=>attendance.attendancedate === date).status  :"--"}</td>
+                            <td>{studentinfo.attendancedata.find(attendace=>attendace.attendancedate === date) ? studentinfo.attendancedata.find(attendance=>attendance.attendancedate === date).status  :"--"}</td>
                         ))}
-                        <td>P -{employeinfo.attendancedata.filter(function(attendace){
+                        <td>P -{studentinfo.attendancedata.filter(function(attendace){
                                     return attendace.status === 'P' || attendace.status === 'p';
                                 }).length} <br />
-                            A -{employeinfo.attendancedata.filter(function(attendace){
+                            A -{studentinfo.attendancedata.filter(function(attendace){
                                     return attendace.status === 'A' || attendace.status === 'a';
                                 }).length}
                         </td>

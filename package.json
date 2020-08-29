@@ -47,3 +47,7 @@
     ]
   }
 }
+
+
+    // "start": "react-scripts start",
+    // "dev": "serve -s build",
