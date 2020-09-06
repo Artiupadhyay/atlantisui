@@ -1,5 +1,6 @@
 import React from 'react';
 import {Redirect}  from 'react-router-dom';
+import Pagination from 'react-js-pagination';
 import EmployeeNavbar from './components/employeenavbar';
 import configs from '../config';
 import VideoCard from './components/videocard';
@@ -12,7 +13,8 @@ class ViewEmployeeVideo extends React.Component{
             classes : null,
             subjects:null,
             videos:null,
-            redirect:false
+            redirect:false,
+            index:0
         };
     }
 
@@ -54,7 +56,7 @@ class ViewEmployeeVideo extends React.Component{
         })
         .then(data=>{
             if(status ===200 || status ===201){
-                this.setState({videos:data});
+                this.setState({videos:data, activePage:1, index :0});
             }
             else{
                 console.log("error =>"+data);
@@ -62,6 +64,9 @@ class ViewEmployeeVideo extends React.Component{
         })
     }
 
+    handlePageChange=(pageNumber) =>{
+        this.setState({activePage: pageNumber, index: (pageNumber-1) * 4});
+      }
 
     render(){
 
@@ -93,13 +98,26 @@ class ViewEmployeeVideo extends React.Component{
                 </div>
                 </div> :<>Kindly Add Some subjects </>}
                 {this.state.videos ?
-                
+                <>
                     <div className="d-flex align-content-center align-self-center flex-row flex-wrap container shadow mt-5 mb-5 pb-5">
                        {this.state.videos.map((videoinfo, index)=>
-                        <VideoCard videoinfo ={videoinfo} key={index}/>
-                       )} 
+                        ((index >= this.state.index) && (index <= this.state.activePage * 4) ? <VideoCard videoinfo ={videoinfo} key={index}/>:null)
+                        )} 
                     </div>
-                   
+                    <div classname="d-flex align-content-center align-self-center flex-row flex-wrap container">
+                    <Pagination
+                        hideNavigation
+                        pageRangeDisplayed={10}
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={4}
+                        totalItemsCount={this.state.videos.length}
+                        onChange={this.handlePageChange}
+                        itemClass="page-item"
+                        linkClass="page-link"
+                        />
+
+                    </div>
+                   </>
                 :"Select other subject"}
             </Container-Fluid> 
               </>
