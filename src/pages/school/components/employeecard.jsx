@@ -1,6 +1,7 @@
 
 import React from 'react';
 import config from './../../config';
+import EmployeModel from './employemodel';
 
 function EmployeeCard(props) {
     var status = ''
@@ -51,6 +52,7 @@ function EmployeeCard(props) {
                 <button onClick={()=>handleDelete(props.employeeinfo.id)} className="mx-auto btn btn-danger">Delete</button>
             </div>
             </div>
+            <EmployeModel employeeid = {props.employeeinfo.id}/>
         </div>
     );
 }
