@@ -73,7 +73,7 @@ export default class EmployeModel extends React.Component {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Student info</Modal.Title>
+            <Modal.Title>Employee info</Modal.Title>
           </Modal.Header>
           {this.state.userid?<Modal.Body className="p-4">
               <div className="row mt-4 ">
