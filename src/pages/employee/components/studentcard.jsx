@@ -34,6 +34,7 @@ function StudentCard(props) {
             <div className="card-body">
             <h5 className="card-title">Name :- {props.studentinfo.name}</h5>
             <p className="card-text">Account Status :-  {(props.studentinfo.active).toString()}</p>
+            <p className="card-text">EMail :-  {props.studentinfo.email}</p>
             <button onClick={changeStatus} className={props.studentinfo.active?" btn btn-danger":"btn btn-success"}>{props.studentinfo.active ? "Deactivate account": "Activate account"}</button>
             <StudentModel studentid = {props.studentinfo.id}/>
             </div>

@@ -48,6 +48,7 @@ function StudentCard(props) {
             <div className="card-body d-flex flex-column">
             <h5 className="card-title">Name :- {props.studentinfo.name}</h5>
             <p className="card-text">Account Status :-  {(props.studentinfo.active).toString()}</p>
+            <p className="card-text">Email :-  {props.studentinfo.email}</p>
             <div className="d-flex flex-row">
                 <button onClick={changeStatus} className={props.studentinfo.active?"btn btn-danger mx-auto":"btn btn-success mx-auto"}>{props.studentinfo.active ? "Deactivate": "Activate"}</button>
                 <button onClick={()=>handleDelete(props.studentinfo.id)} className="btn btn-danger mx-auto">Delete</button>

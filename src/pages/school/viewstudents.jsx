@@ -18,7 +18,7 @@ class ViewStudents extends React.Component{
 
     
 
-    componentDidMount = ()=>{
+    componentWillMount = ()=>{
         fetch(configs.baseurl+'school/class',{
             method:'get',
             headers:{
