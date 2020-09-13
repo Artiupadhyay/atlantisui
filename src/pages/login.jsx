@@ -128,7 +128,7 @@ function Login(props) {
             </div>
             <div className=" mt-2 md-form md-outline">
                 Password:
-                <input type="text" className=" mt-2 form-control" value={password} placeholder="Enter password here" onChange={handelPasswordChange}/>
+                <input type="password" className=" mt-2 form-control" value={password} placeholder="Enter password here" onChange={handelPasswordChange}/>
             </div>
             <div className="md-form md-outline">
              <input type="button" className=" form-control mt-4 btn btn-primary" value="Submit" onClick={login} /></div>
