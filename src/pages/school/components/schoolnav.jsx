@@ -38,9 +38,14 @@ function SchoolNav(props){
               <NavDropdown.Item href="/school/add/timetable">Add Time Table</NavDropdown.Item>
               <NavDropdown.Item href="/school/view/timetable">View Time Table</NavDropdown.Item>
             </NavDropdown>
+            <NavDropdown title="Test" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/school/add/test">Create Test</NavDropdown.Item>
+              <NavDropdown.Item href="/school/view/test">View Test</NavDropdown.Item>
+              <NavDropdown.Item href="/school/test/question">Questions</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           <Nav>
-          <NavDropdown title={localStorage.getItem('name') || "User name"} id="basic-nav-dropdown">
+          <NavDropdown title={localStorage.getItem('name') || "User name"} id="basic-nav-dropdown" style={{maxWidth: "100px", textOverflow: "ellipsis"}}>
               <NavDropdown.Item href="/school/profile">
                 <Image src={localStorage.getItem('image')? "data:image/jpeg;base64,"+ localStorage.getItem('image') : require('./../../../user.png')} height={50} className="rounded"/>
               </NavDropdown.Item>

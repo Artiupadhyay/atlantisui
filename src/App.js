@@ -23,6 +23,9 @@ import ViewEmployeeAttendance from './pages/school/viewemployeeattendance';
 import ViewStudentAttendance from './pages/school/viewstudentattendance';
 import AddTimeTable from './pages/school/addtimetable';
 import ViewTimeTable from './pages/school/viewtimetable';
+import AddTest from './pages/school/addtest';
+import ViewTests from './pages/school/viewtests';
+import TestViewForQuestion from './pages/school/testviewforquestions';
 
 import EmployeeDashBoard from './pages/employee/employeedashboard';
 import EmployeAddStudent from './pages/employee/employeeaddstudent';
@@ -76,6 +79,9 @@ function App() {
            <Route path='/school/view/student/attendance' exact component={ViewStudentAttendance} />
            <Route path='/school/add/timetable' exact component={AddTimeTable} />
            <Route path='/school/view/timetable' exact component={ViewTimeTable} />
+           <Route path='/school/add/test' exact component={AddTest} />
+           <Route path='/school/view/test' exact component={ViewTests} />
+           <Route path='/school/test/question' exact component={TestViewForQuestion} />
            {/* School Route end here */}
            {/* Employee route start */}
            <Route path='/employee/employeedashboard' exact component={EmployeeDashBoard} />
