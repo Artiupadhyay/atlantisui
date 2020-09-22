@@ -1,7 +1,7 @@
 import React from 'react';
 import {Navbar, Nav ,NavDropdown, Image, Container} from 'react-bootstrap';
 
-class EmployeeNavbar extends React.Component{
+class StudentNavbar extends React.Component{
     constructor(){
         super();
         this.state={
@@ -26,6 +26,10 @@ class EmployeeNavbar extends React.Component{
                 <NavDropdown title="Homework" id="basic-nav-dropdown">
                   <NavDropdown.Item href="/student/view/homework">View Homework</NavDropdown.Item>
                 </NavDropdown>
+                <NavDropdown title="Online Test" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="/student/take/test">Take Test</NavDropdown.Item>
+                  <NavDropdown.Item href="/student/view/test">Show Test</NavDropdown.Item>
+                </NavDropdown>
               </Nav>
               <Nav>
               <NavDropdown title={localStorage.getItem('name') || "User name"} id="basic-nav-dropdown">
@@ -44,4 +48,4 @@ class EmployeeNavbar extends React.Component{
 
 }
 
-export default EmployeeNavbar;
+export default StudentNavbar;

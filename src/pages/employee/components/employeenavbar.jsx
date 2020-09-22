@@ -37,6 +37,11 @@ class EmployeeNavbar extends React.Component{
                   <NavDropdown.Item href="/employee/add/homework">Add Homework</NavDropdown.Item>
                   <NavDropdown.Item href="/employee/view/homework">View Homework</NavDropdown.Item>
                 </NavDropdown>
+                <NavDropdown title="Test" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="/employee/add/test">Create Test</NavDropdown.Item>
+                  <NavDropdown.Item href="/employee/view/test">View Test</NavDropdown.Item>
+                  <NavDropdown.Item href="/employee/test/question">Questions</NavDropdown.Item>
+                </NavDropdown>
               </Nav>
               <Nav>
               <NavDropdown title={localStorage.getItem('name') || "User name"} id="basic-nav-dropdown">
