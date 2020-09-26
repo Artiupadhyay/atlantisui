@@ -22,6 +22,7 @@ class StudentNavbar extends React.Component{
                 </NavDropdown>
                <NavDropdown title="Education Portal" id="basic-nav-dropdown">
                   <NavDropdown.Item href="/student/view/tutorial">View Videos</NavDropdown.Item>
+                  <NavDropdown.Item href="/student/live/class">Live Class</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Homework" id="basic-nav-dropdown">
                   <NavDropdown.Item href="/student/view/homework">View Homework</NavDropdown.Item>

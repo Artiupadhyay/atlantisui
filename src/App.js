@@ -42,6 +42,7 @@ import EmployeeProfile from './pages/employee/profile';
 import EmployeeAddTest from './pages/employee/employeeaddtest';
 import EmployeeViewTests from './pages/employee/employeeviewtests';
 import EmployeeTestViewForQuestion from './pages/employee/employeetestviewforquestions';
+import LiveClass from './pages/employee/liveclass';
 
 
 import StudentDashboard from './pages/student/studentdashboard';
@@ -51,6 +52,7 @@ import ViewTutorial from './pages/student/viewtutorial';
 import StudentProfile from './pages/student/studentprofile';
 import TakeTest from './pages/student/taketest';
 import StudentViewTests from './pages/student/studentviewtests';
+import StudentLiveClass from './pages/student/studentliveclass';
 
 
 import {
@@ -105,6 +107,7 @@ function App() {
            <Route path='/employee/add/test' exact component={EmployeeAddTest} />
            <Route path='/employee/view/test' exact component={EmployeeViewTests} />
            <Route path='/employee/test/question' exact component={EmployeeTestViewForQuestion} />
+           <Route path='/employee/live/class' exact component={LiveClass} />
            
            {/* Employee Route End */}
            {/* Student Route Start */}
@@ -115,6 +118,7 @@ function App() {
            <Route path='/student/view/profile' exact component = {StudentProfile} />
            <Route path='/student/take/test' exact component = {TakeTest} />
            <Route path='/student/view/test' exact component = {StudentViewTests} />
+           <Route path='/student/live/class' exact component={StudentLiveClass} />
            {/* Student Route End */}
         </Router>
     );
