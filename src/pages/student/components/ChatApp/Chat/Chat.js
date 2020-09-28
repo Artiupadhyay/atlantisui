@@ -31,7 +31,7 @@ const Chat = () => {
       if(error) {
         alert(error);
       }
-    });
+    });// eslint-disable-next-line
   }, [ENDPOINT, window.location.search]);
   
   useEffect(() => {

@@ -34,11 +34,7 @@ class StudentViewTests extends React.Component{
         })
     }
 
-    handleClassSelect = (event)=>{
-        this.setState({selectedClass:event.target.value});
-    };
-
-
+     
     render(){
         if(localStorage.getItem('role')!=='Student' && ! this.state.redirect){
             localStorage.removeItem('token');
