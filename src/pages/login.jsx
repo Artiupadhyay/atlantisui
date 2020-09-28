@@ -112,10 +112,11 @@ function Login(props) {
 
     return(<>
             {(redirect || path)? <Redirect to ={path} />:null}
-           <div className="p-3 image row d-flex justify-content-center align align-items-center text-white ">
+           <div className="p-3 image row d-flex justify-content-center align align-items-center text-white " style={{margin:0}}>
                <div className="col-md-6">
                 <h1 className=" content font-weight-bold mb-3 text-white">Welcome To Atlantis </h1>
-                   <h2 className="content text-white">Learning is fun!!</h2>
+                   <h2 className="content text-white">Learning is fun!! Download the App Now</h2>
+                   <a href={require('./apk/Atlantis.apk')} download="Atlantis.apk"><img src={require('./Android_Download_Button.png')} style={{width:"10rem"}}alt="Download App"/></a>
                </div>
                <div className="col-md-3">
             <div className="form">

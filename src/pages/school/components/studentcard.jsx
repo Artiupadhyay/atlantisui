@@ -52,7 +52,6 @@ function StudentCard(props) {
             <div className="d-flex flex-row">
                 <button onClick={changeStatus} className={props.studentinfo.active?"btn btn-danger mx-auto":"btn btn-success mx-auto"}>{props.studentinfo.active ? "Deactivate": "Activate"}</button>
                 <button onClick={()=>handleDelete(props.studentinfo.id)} className="btn btn-danger mx-auto">Delete</button>
-            
             </div>
             </div>
             <StudentModel studentid = {props.studentinfo.id}/>
